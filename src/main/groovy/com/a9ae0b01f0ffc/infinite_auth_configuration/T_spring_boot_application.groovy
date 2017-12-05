@@ -1,15 +1,17 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration
 
-import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.*
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Accessor
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Endpoint
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.MajorVersion
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version
 import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
-class T_spring_boot_application implements CommandLineRunner  {
+class T_spring_boot_application implements CommandLineRunner {
 
     static void main(String[] args) {
         SpringApplication.run(T_spring_boot_application.class, args)
@@ -54,17 +56,17 @@ class T_spring_boot_application implements CommandLineRunner  {
         p_endpoint_repository.save(new Endpoint(endpointName: "Sandbox", apiVersion: p_version_repository.findByMajorVersionAndMinorVersion(p_major_version_repository.findByMajorVersion("0").first(), "0").first()))
         p_endpoint_repository.save(new Endpoint(endpointName: "FT2 Development", apiVersion: p_version_repository.findByMajorVersionAndMinorVersion(p_major_version_repository.findByMajorVersion("2").first(), "0").first()))
         p_endpoint_repository.save(new Endpoint(endpointName: "Data Preparation", apiVersion: p_version_repository.findByMajorVersionAndMinorVersion(p_major_version_repository.findByMajorVersion("0").first(), "0").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 0.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 0.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 0.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 0.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 1.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 1.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 1.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 1.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 2.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 2.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 2.0.x", endpoint:  p_endpoint_repository.findByEndpointName("Unexposed 2.0.x").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Multi Currency (Staging)", endpoint:  p_endpoint_repository.findByEndpointName("Staging").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "GFS Single Currency (Staging)", endpoint:  p_endpoint_repository.findByEndpointName("Staging").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "LMN Multi Currency Native (FT2 Development)", endpoint:  p_endpoint_repository.findByEndpointName("FT2 Development").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "React", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "LMN Multi Currency React (FT2 Development)", endpoint:  p_endpoint_repository.findByEndpointName("FT2 Development").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Single Currency (Sandbox)", endpoint:  p_endpoint_repository.findByEndpointName("Sandbox").first()))
-        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Multi Currency (Sandbox)", endpoint:  p_endpoint_repository.findByEndpointName("Sandbox").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 0.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 0.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 0.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 0.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 1.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 1.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 1.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 1.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Single Currency 2.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 2.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 0, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Default Multi Currency 2.0.x", endpoint: p_endpoint_repository.findByEndpointName("Unexposed 2.0.x").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Multi Currency (Staging)", endpoint: p_endpoint_repository.findByEndpointName("Staging").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "GFS Single Currency (Staging)", endpoint: p_endpoint_repository.findByEndpointName("Staging").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "LMN Multi Currency Native (FT2 Development)", endpoint: p_endpoint_repository.findByEndpointName("FT2 Development").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "React", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "LMN Multi Currency React (FT2 Development)", endpoint: p_endpoint_repository.findByEndpointName("FT2 Development").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Single Currency (Sandbox)", endpoint: p_endpoint_repository.findByEndpointName("Sandbox").first()))
+        p_accessor_repository.save(new Accessor(lookupPriority: 1, platform: "Any", appVersion: "Any", user: "Any", FIID: "1100", product: "Any", accessorName: "Whitelabeled Multi Currency (Sandbox)", endpoint: p_endpoint_repository.findByEndpointName("Sandbox").first()))
     }
 }

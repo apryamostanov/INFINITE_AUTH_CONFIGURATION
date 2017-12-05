@@ -10,9 +10,6 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
-        //classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
-        classpath 'org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE'
-        classpath 'net.eikehirsch.react:gradle-react-plugin:0.4.1'
     }
 }
 
@@ -22,8 +19,6 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'application'
-//apply plugin: 'com.moowork.node'
-apply plugin: 'net.eikehirsch.react'
 
 jar {
     baseName = 'gs-accessing-data-rest'
@@ -70,21 +65,3 @@ bootRun {
 
 mainClassName = 'base.T_spring_boot_application'
 
-
-
-node {
-    //version = '8.9.1' // Version of node to use.
-    //npmVersion = '4.4.4'
-    distBaseUrl = 'https://nodejs.org/dist' // Base URL for fetching node distributions (change if you have a mirror).
-    download = true // Download node using above parameters.
-    //nodeModulesDir = file("${project.projectDir}") // Set the work directory where node_modules should be located
-    workDir = file("${System.getProperty('user.home')}/.moowork/nodejs")
-    //npmWorkDir = file("${System.getProperty('user.home')}/.moowork/npm")
-
-}
-
-jsx {
-    sourcesDir = 'src/main/js'
-    destDir    = 'C:\\AP\\CATEGORIZED\\INFINITE\\INFINITE_AUTH_CONFIGURATION\\src\\main\\resources\\static\\built'
-
-}
