@@ -25,6 +25,7 @@ class Identity {
     Authorization prerequisiteAuthorization = GC_NULL_OBJ_REF as Authorization
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
     List<Authentication> authenticationList = new ArrayList<Authentication>()
 
     @ManyToOne(fetch = FetchType.EAGER)

@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param
 @CompileStatic
 interface I_authentication_repository extends PagingAndSortingRepository<Authentication, Long> {
 
-
+    List<Authentication> findByAuthenticationName(@Param("authenticationName") String authenticationName)
 
 }

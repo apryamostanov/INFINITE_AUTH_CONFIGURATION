@@ -22,7 +22,7 @@ class Scope {
     @Column(nullable = false)
     Long id
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    List<Resource> resourceList = new ArrayList<Resource>()
+    @ManyToMany(fetch = FetchType.EAGER)
+    List<Grant> grantList = new ArrayList<Grant>()
 
 }

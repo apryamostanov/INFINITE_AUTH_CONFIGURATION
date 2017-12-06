@@ -30,6 +30,10 @@ class Authorization {
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
     List<Identity> identityList = new ArrayList<Identity>()
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    List<Scope> scopeList = new ArrayList<Scope>()
     
     String authorizationName = GC_EMPTY_STRING
 

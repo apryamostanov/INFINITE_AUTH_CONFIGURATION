@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param
 @CompileStatic
 interface I_accessor_repository extends PagingAndSortingRepository<Accessor, Long> {
 
-
+    List<Accessor> findByAccessorName(@Param("accessorName") String accessorName)
 
 }

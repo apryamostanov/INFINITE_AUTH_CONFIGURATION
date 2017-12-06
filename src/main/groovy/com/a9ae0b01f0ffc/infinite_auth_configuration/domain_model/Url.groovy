@@ -5,12 +5,13 @@ import groovy.transform.CompileStatic
 import javax.persistence.*
 
 import static base.T_common_base_1_const.GC_EMPTY_STRING
+import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 
 @CompileStatic
 @Entity
-class MajorVersion {
+class Url {
 
-    String majorVersion = GC_EMPTY_STRING
+    String url = GC_EMPTY_STRING
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

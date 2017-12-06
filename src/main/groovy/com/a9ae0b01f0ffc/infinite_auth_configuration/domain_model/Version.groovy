@@ -11,10 +11,14 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 @Entity
 class Version {
 
-    String minorVersion = GC_EMPTY_STRING
+    String versionName = GC_EMPTY_STRING
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    MajorVersion majorVersion = GC_NULL_OBJ_REF as MajorVersion
+    @OneToOne(fetch = FetchType.EAGER)
+    Version parentVersion = GC_NULL_OBJ_REF as Version
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    List<Resource> resourceList
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

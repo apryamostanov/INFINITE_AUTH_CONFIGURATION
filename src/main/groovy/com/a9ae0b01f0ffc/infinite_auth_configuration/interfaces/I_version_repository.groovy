@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param
 @CompileStatic
 interface I_version_repository extends PagingAndSortingRepository<Version, Long> {
 
-    List<Version> findByMajorVersionAndMinorVersion(@Param("majorVersion") MajorVersion majorVersion, @Param("minorVersion") String minorVersion)
+    List<Version> findByVersionName(@Param("versionName") String versionName)
 
 }

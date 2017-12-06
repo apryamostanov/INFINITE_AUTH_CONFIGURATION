@@ -13,9 +13,6 @@ class Resource {
 
     String resourceName = GC_EMPTY_STRING
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    Version resourceVersion = GC_NULL_OBJ_REF as Version
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
