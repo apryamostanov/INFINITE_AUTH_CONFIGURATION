@@ -1,5 +1,6 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration
 
+import com.a9ae0b01f0ffc.infinite_auth_configuration.base.T_auth_base_5_context
 import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.*
 import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.*
 import org.springframework.beans.factory.annotation.Autowired
@@ -40,6 +41,8 @@ class T_spring_boot_application implements CommandLineRunner {
     private I_grant_repository p_grant_repository
     @Autowired
     private I_grant_repository p_url_repository
+    @Autowired
+    private T_auth_base_5_context p_auth_base_5_context
 
     @Override
     void run(String... args) throws Exception {
@@ -363,13 +366,121 @@ class T_spring_boot_application implements CommandLineRunner {
         p_scope_repository.save(new Scope(scopeName: "Change Security Answers", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantList: [
                 p_grant_repository.findByResource(p_resource_repository.findByResourceName("SetAnswers").first()).first()
         ]))
-        p_authentication_repository.save(new Authentication(authenticationName: "Accessor_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "User_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "Refresh_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "OTP_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "Provisioned_user_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "Provisioning_data"))
-        p_authentication_repository.save(new Authentication(authenticationName: "DOB_data"))
+        p_data_field_repository.save(new DataField(fieldName: "app_name", fieldValue: "%APPNAME%"))
+        p_data_field_repository.save(new DataField(fieldName: "platform", fieldValue: "%PLATFORM%"))
+        p_data_field_repository.save(new DataField(fieldName: "FIID", fieldValue: "%FIID%"))
+        p_data_field_repository.save(new DataField(fieldName: "api_version", fieldValue: "%APIVERSION%"))
+        p_data_field_repository.save(new DataField(fieldName: "app_version", fieldValue: "%APPVERSION%"))
+        p_data_field_repository.save(new DataField(fieldName: "language", fieldValue: "%LANGUAGE%"))
+        p_data_field_repository.save(new DataField(fieldName: "specific_data", fieldValue: "%SPECIFICDATA%"))
+        p_data_field_repository.save(new DataField(fieldName: "username", fieldValue: "%USERNAME%"))
+        p_data_field_repository.save(new DataField(fieldName: "password", fieldValue: "%PASSWORD%"))
+        p_data_field_repository.save(new DataField(fieldName: "proxy_number", fieldValue: "%PROXYNUMBER%"))
+        p_data_field_repository.save(new DataField(fieldName: "account_number", fieldValue: "%ACCOUNTNUMBER%"))
+        p_data_field_repository.save(new DataField(fieldName: "old_access_token", fieldValue: "%OLDACCESSTOKEN%"))
+        p_data_field_repository.save(new DataField(fieldName: "refresh_token", fieldValue: "%REFRESHTOKEN%"))
+        p_data_field_repository.save(new DataField(fieldName: "otp_id", fieldValue: "%OTPID%"))
+        p_data_field_repository.save(new DataField(fieldName: "OTP", fieldValue: "%OTP%"))
+        p_data_field_repository.save(new DataField(fieldName: "otp", fieldValue: "%OTP%"))
+        p_data_field_repository.save(new DataField(fieldName: "provisioned_data_unique_id", fieldValue: "%PROVISIONEDDATAUNIQUEID%"))
+        p_data_field_repository.save(new DataField(fieldName: "provisioned_user_data_usage_authorization", fieldValue: "%PROVISIONEDUSERDATAUSAGEAUTHORIZATION%"))
+        p_data_field_repository.save(new DataField(fieldName: "provisioned_data_singature", fieldValue: "%PROVISIONEDDATASINGATURE%"))
+        p_data_field_repository.save(new DataField(fieldName: "provisioning_public_key", fieldValue: "%PROVISIONINGPUBLICKEY%"))
+        p_data_field_repository.save(new DataField(fieldName: "DOB", fieldValue: "%DOB%"))
+        p_data_field_repository.save(new DataField(fieldName: "card_type_id_enhanced", fieldValue: "%CARDTYPEIDENHANCED%"))
+        p_data_field_repository.save(new DataField(fieldName: "login_flag", fieldValue: "%LOGINFLAG%"))
+        p_data_field_repository.save(new DataField(fieldName: "error_number", fieldValue: "%ERRORNUMBER%"))
+        p_data_field_repository.save(new DataField(fieldName: "product_id", fieldValue: "%PRODUCTID%"))
+        p_data_field_repository.save(new DataField(fieldName: "username", fieldValue: "%USERNAME%"))
+        p_authentication_repository.save(new Authentication(authenticationName: "Accessor_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("accessor_id", "%ACCESSORID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("platform", "%PLATFORM%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("FIID", "%FIID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("api_version", "%APIVERSION%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("language", "%LANGUAGE%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("specific_data", "%SPECIFICDATA%").first()
+        ], privateDataFieldList: [
+
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("accessor_id", "%ACCESSORID%").first()
+        ], functionalFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("language", "%LANGUAGE%").first()
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "User_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first()
+        ], privateDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("password", "%PASSWORD%").first()
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("card_type_id_enhanced", "%CARDTYPEIDENHANCED%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("login_flag", "%LOGINFLAG%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("error_number", "%ERRORNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
+        ], functionalFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("product_id", "%PRODUCTID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "Refresh_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("old_access_token", "%OLDACCESSTOKEN%").first()
+        ], privateDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("refresh_token", "%REFRESHTOKEN%").first()
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("card_type_id_enhanced", "%CARDTYPEIDENHANCED%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("login_flag", "%LOGINFLAG%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("error_number", "%ERRORNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
+        ], functionalFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("product_id", "%PRODUCTID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "OTP_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("otp_id", "%OTPID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("phone_number", "%PHONENUMBER%").first()
+        ], privateDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("otp", "%OTP%").first()
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("phone_number", "%PHONENUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first()
+        ], functionalFieldList: [
+
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "Provisioned_user_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("provisioned_data_unique_id", "%PROVISIONEDDATAUNIQUEID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("provisioned_user_data_usage_authorization", "%PROVISIONEDUSERDATAUSAGEAUTHORIZATION%").first()
+        ], privateDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("provisioned_data_singature", "%PROVISIONEDDATASINGATURE%").first()
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first()
+        ], functionalFieldList: [
+
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "Provisioning_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("provisioning_public_key", "%PROVISIONINGPUBLICKEY%").first()
+        ], privateDataFieldList: [
+
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first()
+        ], functionalFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("provisioning_public_key", "%PROVISIONINGPUBLICKEY%").first()
+        ]))
+        p_authentication_repository.save(new Authentication(authenticationName: "DOB_data", publicDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first()
+        ], privateDataFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("DOB", "%DOB%").first()
+        ], keyFieldList: [
+                p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first()
+        ], functionalFieldList: [
+
+        ]))
         p_identity_repository.save(new Identity(identityName: "Owner of Accessor Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationList: [p_authentication_repository.findByAuthenticationName("Accessor_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationList: [p_authentication_repository.findByAuthenticationName("User_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of Refresh Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationList: [p_authentication_repository.findByAuthenticationName("Refresh_data").first()]))
@@ -385,5 +496,11 @@ class T_spring_boot_application implements CommandLineRunner {
         p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeList: [p_scope_repository.findByScopeName("Update Phone").first()]))
         p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeList: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
         p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeList: []))
+        p_auth_base_5_context.init_standalone()
+        List<DataField> l_func = new ArrayList<DataField>()
+        p_authentication_repository.findByAuthenticationName("User_data").first().validate([new DataField(fieldName: "Username", fieldValue: "666")], [], l_func, [])
+        for (l_func_field in l_func) {
+            System.out.println("Func field": l_func_field.fieldName)
+        }
     }
 }
