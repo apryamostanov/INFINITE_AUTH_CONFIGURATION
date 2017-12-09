@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.Import
+import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration
+import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 import static com.a9ae0b01f0ffc.infinite_auth_configuration.base.T_auth_base_4_const.GC_ANY_ENDPOINT
 
 @SpringBootApplication
+@EnableSwagger2
+@Import(SpringDataRestConfiguration.class)
 class T_spring_boot_application implements CommandLineRunner {
 
     static void main(String[] args) {
@@ -41,6 +46,8 @@ class T_spring_boot_application implements CommandLineRunner {
     private I_grant_repository p_grant_repository
     @Autowired
     private I_grant_repository p_url_repository
+    @Autowired
+    private I_rule_repository p_rule_repository
     @Autowired
     private T_auth_base_5_context p_auth_base_5_context
 
@@ -491,11 +498,90 @@ class T_spring_boot_application implements CommandLineRunner {
         p_identity_repository.save(new Identity(identityName: "Owner of Provisioned User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationList: [p_authentication_repository.findByAuthenticationName("Provisioned_user_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and Provisioning Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationList: [p_authentication_repository.findByAuthenticationName("Provisioning_data").first()]))
         p_authorization_repository.save(new Authorization(authorizationName: "Anonymous", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of Accessor Data").first()], scopeList: [p_scope_repository.findByScopeName("Anonymous Services").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Read", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Refresh Data").first()], scopeList: [p_scope_repository.findByScopeName("Main Screen").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first()], scopeList: [p_scope_repository.findByScopeName("Update Profile").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeList: [p_scope_repository.findByScopeName("Update Phone").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeList: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeList: []))
+        p_authorization_repository.save(new Authorization(authorizationName: "Read", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Refresh Data").first()], scopeList: [p_scope_repository.findByScopeName("Main Screen").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first()], scopeList: [p_scope_repository.findByScopeName("Update Profile").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeList: [p_scope_repository.findByScopeName("Update Phone").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeList: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identityList: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeList: []))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(),
+                scope: p_scope_repository.findByScopeName("Anonymous Services").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshAllowed: 1,
+                refreshDurationSeconds: 2592000,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshAllowed: 1,
+                refreshDurationSeconds: 1800,
+                accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
+                lookupPriority: 1
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
+                scope: p_scope_repository.findByScopeName("Update Profile").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Provisioned User Data Usage").first(),
+                durationSeconds: 2592000,
+                maxUsageCount: 20,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
+                scope: p_scope_repository.findByScopeName("Change Password").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
+                scope: p_scope_repository.findByScopeName("Change Security Answers").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_rule_repository.save(new Rule(
+                authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
+                scope: p_scope_repository.findByScopeName("Update Phone").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                refreshAllowed: 0,
+                refreshDurationSeconds: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
         p_auth_base_5_context.init_standalone()
         List<DataField> l_func = new ArrayList<DataField>()
         p_authentication_repository.findByAuthenticationName("User_data").first().validate([new DataField(fieldName: "Username", fieldValue: "666")], [], l_func, [])

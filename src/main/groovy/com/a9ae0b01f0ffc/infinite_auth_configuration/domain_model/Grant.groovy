@@ -19,6 +19,7 @@ class Grant {
     List<Method> methodList = new ArrayList<Method>()
 
     /*Priority 3*/
+    /*Ownership by another resource with existing grant/access*/
     @ManyToOne(fetch = FetchType.EAGER)
     Grant parentGrant = GC_NULL_OBJ_REF as Grant
 

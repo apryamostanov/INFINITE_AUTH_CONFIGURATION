@@ -27,7 +27,7 @@ class Accessor {
     String FIID = GC_EMPTY_STRING
     String product = GC_EMPTY_STRING
     String productGroup = GC_EMPTY_STRING
-    Integer is_forbidden = GC_NULL_OBJ_REF as Integer
+    Integer isForbidden = GC_NULL_OBJ_REF as Integer
 
     @ManyToOne(fetch = FetchType.EAGER)
     Endpoint endpoint = GC_NULL_OBJ_REF as Endpoint
