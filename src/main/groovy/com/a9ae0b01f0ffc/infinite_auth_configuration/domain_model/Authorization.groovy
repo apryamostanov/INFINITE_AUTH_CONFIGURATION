@@ -37,14 +37,6 @@ class Authorization {
     
     String authorizationName = GC_EMPTY_STRING
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @OrderColumn
-    List<DataField> functionalFieldList = new ArrayList<DataField>()
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @OrderColumn
-    List<DataField> keyFieldList = new ArrayList<DataField>()
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)

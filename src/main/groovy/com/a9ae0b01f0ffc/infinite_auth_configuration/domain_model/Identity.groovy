@@ -21,9 +21,6 @@ class Identity {
 
     String identityName = GC_EMPTY_STRING
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    Authorization prerequisiteAuthorization = GC_NULL_OBJ_REF as Authorization
-
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
     List<Authentication> authenticationList = new ArrayList<Authentication>()
