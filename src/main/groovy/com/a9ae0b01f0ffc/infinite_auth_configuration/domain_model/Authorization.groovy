@@ -29,11 +29,11 @@ class Authorization {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Identity> identityList = new ArrayList<Identity>()
+    Set<Identity> identitySet = new HashSet<Identity>()
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Scope> scopeList = new ArrayList<Scope>()
+    Set<Scope> scopeSet = new HashSet<Scope>()
     
     String authorizationName = GC_EMPTY_STRING
 

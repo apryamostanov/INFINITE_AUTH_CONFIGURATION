@@ -23,7 +23,7 @@ class Identity {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Authentication> authenticationList = new ArrayList<Authentication>()
+    Set<Authentication> authenticationSet = new HashSet<Authentication>()
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn

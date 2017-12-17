@@ -16,7 +16,7 @@ class Grant {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Method> methodList = new ArrayList<Method>()
+    Set<Method> methodSet = new HashSet<Method>()
 
     /*Priority 3*/
     /*Ownership by another resource with existing grant/access*/
@@ -33,11 +33,11 @@ class Grant {
     /*/search/findByUsername?username=$username}*/
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Url> searchUrlList = new ArrayList<Url>()
+    Set<Url> searchUrlSet = new HashSet<Url>()
 
     /*Priority 4*/
     @ManyToMany(fetch = FetchType.EAGER)
-    List<DataField> payloadKeyFieldList = new ArrayList<DataField>()
+    Set<DataField> payloadKeyFieldSet = new HashSet<DataField>()
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

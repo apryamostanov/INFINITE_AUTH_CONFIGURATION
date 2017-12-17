@@ -23,6 +23,11 @@ class Scope {
     Long id
 
     @ManyToMany(fetch = FetchType.EAGER)
-    List<Grant> grantList = new ArrayList<Grant>()
+    Set<Grant> grantSet = new HashSet<Grant>()
+
+    //
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "scopeSet")
+    @OrderColumn
+    Set<Authorization> authorizationSet = new HashSet<Authorization>()
 
 }

@@ -18,7 +18,7 @@ class Version {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    List<Resource> resourceList
+    Set<Resource> resourceSet
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
