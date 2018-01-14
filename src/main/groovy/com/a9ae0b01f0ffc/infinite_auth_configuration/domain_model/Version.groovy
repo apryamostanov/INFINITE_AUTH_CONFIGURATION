@@ -1,7 +1,7 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model
 
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version
 import groovy.transform.CompileStatic
-import io.swagger.annotations.ApiModelProperty
 
 import javax.persistence.*
 
@@ -12,7 +12,7 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 @Entity
 class Version {
 
-    @ApiModelProperty(example = "Accessor", value = "RestResource name (singular)")
+
     String resourceName = this.getClass().getSimpleName()
 
     String versionName = GC_EMPTY_STRING

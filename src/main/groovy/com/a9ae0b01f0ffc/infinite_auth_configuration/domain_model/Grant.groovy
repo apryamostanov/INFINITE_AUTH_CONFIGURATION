@@ -1,7 +1,6 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model
 
 import groovy.transform.CompileStatic
-import io.swagger.annotations.ApiModelProperty
 
 import javax.persistence.*
 
@@ -11,18 +10,18 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 @Entity
 class Grant {
 
-    @ApiModelProperty(example = "Accessor", value = "RestResource name (singular)")
+
     String resourceName = this.getClass().getSimpleName()
 
     @ManyToOne(fetch = FetchType.EAGER)
-    RestResource resource = GC_NULL_OBJ_REF as RestResource
+    RestResource restResource = GC_NULL_OBJ_REF as RestResource
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
     Set<Method> methodSet = new HashSet<Method>()
 
     /*Priority 3*/
-    /*Ownership by another resource with existing grant/access*/
+    /*Ownership by another restResource with existing grant/access*/
     @ManyToOne(fetch = FetchType.EAGER)
     Grant parentGrant = GC_NULL_OBJ_REF as Grant
 

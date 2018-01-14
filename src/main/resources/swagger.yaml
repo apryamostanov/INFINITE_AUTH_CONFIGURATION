@@ -33,7 +33,7 @@ tags:
     description: Simple Jpa Repository
   - name: Accessor Entity
     description: Simple Jpa Repository
-  - name: Rule Entity
+  - name: Token Entity
     description: Simple Jpa Repository
   - name: Method Entity
     description: Simple Jpa Repository
@@ -5531,7 +5531,7 @@ paths:
   /api/rules:
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: findAllRule
       operationId: findAllRuleUsingGET
       consumes:
@@ -5561,7 +5561,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Rule»'
+            $ref: '#/definitions/Resources«Token»'
         '401':
           description: Unauthorized
         '403':
@@ -5570,7 +5570,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: saveRule
       operationId: saveRuleUsingPOST
       consumes:
@@ -5583,12 +5583,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/Rule'
+            $ref: '#/definitions/Token'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«Rule»'
+            $ref: '#/definitions/RestResource«Token»'
         '201':
           description: Created
         '401':
@@ -5600,7 +5600,7 @@ paths:
   '/api/rules/{id}':
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: findOneRule
       operationId: findOneRuleUsingGET
       consumes:
@@ -5618,7 +5618,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«Rule»'
+            $ref: '#/definitions/RestResource«Token»'
         '401':
           description: Unauthorized
         '403':
@@ -5627,7 +5627,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: saveRule
       operationId: saveRuleUsingPUT
       consumes:
@@ -5646,12 +5646,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/Rule'
+            $ref: '#/definitions/Token'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«Rule»'
+            $ref: '#/definitions/RestResource«Token»'
         '201':
           description: Created
         '401':
@@ -5662,7 +5662,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: deleteRule
       operationId: deleteRuleUsingDELETE
       consumes:
@@ -5688,7 +5688,7 @@ paths:
   '/api/rules/{id}/accessor':
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleaccessor
       operationId: ruleaccessorUsingGET
       consumes:
@@ -5715,7 +5715,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleaccessor
       operationId: ruleaccessorUsingPOST
       consumes:
@@ -5745,7 +5745,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleaccessor
       operationId: ruleaccessorUsingPUT
       consumes:
@@ -5781,7 +5781,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleaccessor
       operationId: ruleaccessorUsingDELETE
       consumes:
@@ -5807,7 +5807,7 @@ paths:
           description: Forbidden
     patch:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleaccessor
       operationId: ruleaccessorUsingPATCH
       consumes:
@@ -5842,7 +5842,7 @@ paths:
   '/api/rules/{id}/authorization':
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleauthorization
       operationId: ruleauthorizationUsingGET
       consumes:
@@ -5869,7 +5869,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleauthorization
       operationId: ruleauthorizationUsingPOST
       consumes:
@@ -5899,7 +5899,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleauthorization
       operationId: ruleauthorizationUsingPUT
       consumes:
@@ -5935,7 +5935,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleauthorization
       operationId: ruleauthorizationUsingDELETE
       consumes:
@@ -5961,7 +5961,7 @@ paths:
           description: Forbidden
     patch:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleauthorization
       operationId: ruleauthorizationUsingPATCH
       consumes:
@@ -5996,7 +5996,7 @@ paths:
   '/api/rules/{id}/identity':
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleidentity
       operationId: ruleidentityUsingGET
       consumes:
@@ -6023,7 +6023,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleidentity
       operationId: ruleidentityUsingPOST
       consumes:
@@ -6053,7 +6053,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleidentity
       operationId: ruleidentityUsingPUT
       consumes:
@@ -6089,7 +6089,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleidentity
       operationId: ruleidentityUsingDELETE
       consumes:
@@ -6115,7 +6115,7 @@ paths:
           description: Forbidden
     patch:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: ruleidentity
       operationId: ruleidentityUsingPATCH
       consumes:
@@ -6150,7 +6150,7 @@ paths:
   '/api/rules/{id}/scope':
     get:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: rulescope
       operationId: rulescopeUsingGET
       consumes:
@@ -6177,7 +6177,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: rulescope
       operationId: rulescopeUsingPOST
       consumes:
@@ -6207,7 +6207,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: rulescope
       operationId: rulescopeUsingPUT
       consumes:
@@ -6243,7 +6243,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: rulescope
       operationId: rulescopeUsingDELETE
       consumes:
@@ -6269,7 +6269,7 @@ paths:
           description: Forbidden
     patch:
       tags:
-        - Rule Entity
+        - Token Entity
       summary: rulescope
       operationId: rulescopeUsingPATCH
       consumes:
@@ -8279,7 +8279,7 @@ definitions:
       content:
         type: array
         items:
-          $ref: '#/definitions/Rule'
+          $ref: '#/definitions/Token'
       links:
         type: array
         items:

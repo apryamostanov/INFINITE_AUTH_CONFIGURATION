@@ -9,12 +9,10 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Import
 import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration
-import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 import static com.a9ae0b01f0ffc.infinite_auth_configuration.base.T_auth_base_4_const.GC_ANY_ENDPOINT
 
 @SpringBootApplication
-@EnableSwagger2
 @Import(SpringDataRestConfiguration.class)
 class T_spring_boot_application implements CommandLineRunner {
 
@@ -47,7 +45,7 @@ class T_spring_boot_application implements CommandLineRunner {
     @Autowired
     private I_grant_repository p_url_repository
     @Autowired
-    private I_rule_repository p_rule_repository
+    private I_token_repository p_token_repository
     @Autowired
     private T_auth_base_5_context p_auth_base_5_context
 
@@ -274,103 +272,103 @@ class T_spring_boot_application implements CommandLineRunner {
         p_data_field_repository.save(new DataField(fieldName: "accessor_id", fieldValue: "%ACCESSORID%"))
         p_data_field_repository.save(new DataField(fieldName: "PhoneNumber", fieldValue: "%PHONENUMBER%"))
         p_data_field_repository.save(new DataField(fieldName: "phone_number", fieldValue: "%PHONENUMBER%"))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("UserRegistration").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("CardActivationSS").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotPassword").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetSecretKey").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotUserId").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("UserRegistration").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("CardActivationSS").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotPassword").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetSecretKey").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotUserId").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Anonymous Services", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UserRegistration").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPassword").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetSecretKey").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotUserId").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistration").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPassword").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetSecretKey").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotUserId").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first()).first()
         ]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetCardDetailEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetCVC").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("CardSearchEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetTransactionHistory").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("FXRateSearch").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProductID", "%PRODUCTID%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetTransactionDetail").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("SetStatementDate").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("SearchWalletAccount").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("StatementInformationMultiCurrency").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("StatementsInformation").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("UpdateWalletPriority").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("VirtualCardCreate").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("VirtualCardUpdate").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("W2WTransferConfirm").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotPIN").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ForgotPINValidationParameters").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GenerateOTP").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("SendOTPSMS").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ValidateOTP").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ValidateOTPSMS").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetCardDetailEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetCVC").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("CardSearchEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetTransactionHistory").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("FXRateSearch").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProductID", "%PRODUCTID%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetTransactionDetail").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("SetStatementDate").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("SearchWalletAccount").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("StatementInformationMultiCurrency").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("StatementsInformation").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("UpdateWalletPriority").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("VirtualCardCreate").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("VirtualCardUpdate").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("W2WTransferConfirm").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotPIN").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ForgotPINValidationParameters").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GenerateOTP").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("SendOTPSMS").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("AccountNumber", "%ACCOUNTNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ValidateOTP").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ValidateOTPSMS").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
         Url l_url_accessor_id = p_url_repository.save(new Url(urlName: "/%ACCESSORID%/*/*/*"))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("Document").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], url: l_url_accessor_id))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("Document_metadata").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], url: l_url_accessor_id))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProductID", "%PRODUCTID%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("Document").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], url: l_url_accessor_id))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("Document_metadata").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], url: l_url_accessor_id))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first(), methodSet: [p_method_repository.findByMethodName("GET").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("ProductID", "%PRODUCTID%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Main Screen", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetCardDetailEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetCVC").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardSearchEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UserRegistration").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPassword").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetTransactionHistory").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("FXRateSearch").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetSecretKey").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetTransactionDetail").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("SetStatementDate").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("SearchWalletAccount").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("StatementInformationMultiCurrency").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("StatementsInformation").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UpdateWalletPriority").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("VirtualCardCreate").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("VirtualCardUpdate").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("W2WTransferConfirm").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPIN").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotPINValidationParameters").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GenerateOTP").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("SendOTPSMS").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ValidateOTP").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ValidateOTPSMS").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotUserId").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("Document").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("Document_metadata").first()).first(),
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetCardDetailEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetCVC").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationValidationParameterSSEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardSearchEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistration").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPassword").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPasswordValidationParameterEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetTransactionHistory").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("FXRateSearch").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetSecretKey").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetTransactionDetail").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("SetStatementDate").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("SearchWalletAccount").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("StatementInformationMultiCurrency").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("StatementsInformation").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UpdateWalletPriority").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("VirtualCardCreate").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("VirtualCardUpdate").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("W2WTransferConfirm").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPIN").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotPINValidationParameters").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GenerateOTP").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("SendOTPSMS").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ValidateOTP").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ValidateOTPSMS").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotUserId").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("Document").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("Document_metadata").first()).first(),
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first()).first()
         ]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("UpdateProfileWithoutPhone").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("UpdateProfileWithoutPhone").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Update Profile", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UpdateProfileWithoutPhone").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UpdateProfileWithoutPhone").first()).first()
         ]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("UpdateProfileWithPhone").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("PhoneNumber", "%PHONENUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("UpdateProfileWithPhone").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("PhoneNumber", "%PHONENUMBER%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Update Phone", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("UpdateProfileWithPhone").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UpdateProfileWithPhone").first()).first()
         ]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("ChangePassword").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("ChangePassword").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Change Password", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("ChangePassword").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ChangePassword").first()).first()
         ]))
-        p_grant_repository.save(new Grant(resource: p_resource_repository.findByRestResourceName("SetAnswers").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
+        p_grant_repository.save(new Grant(restResource: p_resource_repository.findByRestResourceName("SetAnswers").first(), methodSet: [p_method_repository.findByMethodName("POST").first()], payloadKeyFieldSet: [p_data_field_repository.findByFieldNameAndFieldValue("CardNumber", "%CARDNUMBER%").first(), p_data_field_repository.findByFieldNameAndFieldValue("ProxyNumber", "%PROXYNUMBER%").first()]))
         p_scope_repository.save(new Scope(scopeName: "Change Security Answers", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
-                p_grant_repository.findByResource(p_resource_repository.findByRestResourceName("SetAnswers").first()).first()
+                p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("SetAnswers").first()).first()
         ]))
         p_data_field_repository.save(new DataField(fieldName: "app_name", fieldValue: "%APPNAME%"))
         p_data_field_repository.save(new DataField(fieldName: "platform", fieldValue: "%PLATFORM%"))
@@ -497,87 +495,75 @@ class T_spring_boot_application implements CommandLineRunner {
         p_identity_repository.save(new Identity(identityName: "Owner of Provisioned User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioned_user_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and Provisioning Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioning_data").first()]))
         p_authorization_repository.save(new Authorization(authorizationName: "Anonymous", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of Accessor Data").first()], scopeSet: [p_scope_repository.findByScopeName("Anonymous Services").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Read", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Refresh Data").first()], scopeSet: [p_scope_repository.findByScopeName("Main Screen").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Profile").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Phone").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeSet: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", prerequisiteAuthorization: p_authorization_repository.findByAuthorizationName("Read").first(), accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeSet: []))
-        p_rule_repository.save(new Rule(
+        p_authorization_repository.save(new Authorization(authorizationName: "Read", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Refresh Data").first()], scopeSet: [p_scope_repository.findByScopeName("Main Screen").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Profile").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Phone").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeSet: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
+        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeSet: []))
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(),
                 scope: p_scope_repository.findByScopeName("Anonymous Services").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshAllowed: 1,
-                refreshDurationSeconds: 2592000,
+                /*refreshAllowed: 1,
+                refreshDurationSeconds: 2592000,*/
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshAllowed: 1,
-                refreshDurationSeconds: 1800,
+                /*refreshAllowed: 1,
+                refreshDurationSeconds: 1800,*/
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 1
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Provisioned User Data Usage").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Password").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Security Answers").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
-        p_rule_repository.save(new Rule(
+        p_token_repository.save(new Token(
                 authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                refreshAllowed: 0,
-                refreshDurationSeconds: null,
                 accessor: null,
                 lookupPriority: 0
         ))
