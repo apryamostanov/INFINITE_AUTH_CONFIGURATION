@@ -7,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.Import
-import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration
 
 import static com.a9ae0b01f0ffc.infinite_auth_configuration.base.T_auth_base_4_const.GC_ANY_ENDPOINT
 
 @SpringBootApplication
-@Import(SpringDataRestConfiguration.class)
 class T_spring_boot_application implements CommandLineRunner {
 
     static void main(String[] args) {
