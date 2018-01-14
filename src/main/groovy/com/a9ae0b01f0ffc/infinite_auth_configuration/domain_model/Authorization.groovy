@@ -2,6 +2,7 @@ package com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model
 
 
 import groovy.transform.CompileStatic
+import io.swagger.annotations.ApiModelProperty
 
 import javax.persistence.CascadeType
 import javax.persistence.Column
@@ -19,6 +20,9 @@ import static com.a9ae0b01f0ffc.infinite_auth_configuration.base.T_auth_base_4_c
 @CompileStatic
 @Entity
 class Authorization {
+
+    @ApiModelProperty(example = "Accessor", value = "RestResource name (singular)")
+    String resourceName = this.getClass().getSimpleName()
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn

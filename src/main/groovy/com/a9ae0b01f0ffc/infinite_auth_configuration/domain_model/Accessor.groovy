@@ -8,12 +8,17 @@ import io.swagger.annotations.ApiModelProperty
 import javax.persistence.*
 
 import static base.T_common_base_1_const.GC_EMPTY_STRING
+import static base.T_common_base_1_const.GC_FIRST_CHAR
 import static base.T_common_base_1_const.GC_NULL_OBJ_REF
+import static base.T_common_base_1_const.GC_POINT
 
 @ApiModel(description = "Consumed by Accessor Authentication Provider (e.g. Accessor_data module). Groups authorization rules (Authorization, Identity, Scope definitions). Defines Set of client software allowed (or restricted) for accessing the API - and their corresponding identification mappings.")
 @CompileStatic
 @Entity
 class Accessor {
+
+    @ApiModelProperty(example = "Accessor", value = "RestResource name (singular)")
+    String resourceName = this.getClass().getSimpleName()
 
     @ApiModelProperty(example = "0", value = "Internal field. Priority for Accessor identity provider matching. All accessor definitions are sorted with this field - and those with higher priority - matched first within Accessor authentication provider")
     Integer lookupPriority = GC_NULL_OBJ_REF as Integer

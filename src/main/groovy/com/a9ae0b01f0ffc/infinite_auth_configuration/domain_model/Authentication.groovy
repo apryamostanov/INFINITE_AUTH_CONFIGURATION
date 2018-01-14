@@ -7,11 +7,16 @@ import io.swagger.annotations.ApiModelProperty
 import javax.persistence.*
 
 import static base.T_common_base_1_const.GC_EMPTY_STRING
+import static base.T_common_base_1_const.GC_FIRST_CHAR
+import static base.T_common_base_1_const.GC_POINT
 
 @ApiModel(description = "Defines a set of input (public, private) and output (keys, functional) data as well as the Granting Server -> Authentication Provider name")
 @CompileStatic
 @Entity
 class Authentication {
+
+    @ApiModelProperty(example = "Accessor", value = "RestResource name (singular)")
+    String resourceName = this.getClass().getSimpleName()
 
     @ApiModelProperty(example = "User_data", value = "Defines the Granting Server -> Authentication Provider name")
     String authenticationName = GC_EMPTY_STRING

@@ -11,7 +11,7 @@ info:
 host: 'localhost:8080'
 basePath: /
 tags:
-  - name: Resource Entity
+  - name: RestResource Entity
     description: Simple Jpa Repository
   - name: profile-controller
     description: Profile Controller
@@ -102,7 +102,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -159,7 +159,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -192,7 +192,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -247,7 +247,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '401':
           description: Unauthorized
         '403':
@@ -275,7 +275,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -311,7 +311,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -373,7 +373,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '204':
           description: No Content
         '401':
@@ -401,7 +401,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '401':
           description: Unauthorized
         '403':
@@ -429,7 +429,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '201':
           description: Created
         '401':
@@ -465,7 +465,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '201':
           description: Created
         '401':
@@ -527,7 +527,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '204':
           description: No Content
         '401':
@@ -555,7 +555,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -583,7 +583,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -619,7 +619,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -681,7 +681,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '204':
           description: No Content
         '401':
@@ -748,7 +748,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authentication»'
+            $ref: '#/definitions/RestResource«Authentication»'
         '201':
           description: Created
         '401':
@@ -805,7 +805,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authentication»'
+            $ref: '#/definitions/RestResource«Authentication»'
         '401':
           description: Unauthorized
         '403':
@@ -838,7 +838,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authentication»'
+            $ref: '#/definitions/RestResource«Authentication»'
         '201':
           description: Created
         '401':
@@ -1058,7 +1058,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -1282,7 +1282,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -1506,7 +1506,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -1730,7 +1730,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -1828,7 +1828,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -1885,7 +1885,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '401':
           description: Unauthorized
         '403':
@@ -1918,7 +1918,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -1973,7 +1973,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -2001,7 +2001,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -2037,7 +2037,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -2099,7 +2099,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '204':
           description: No Content
         '401':
@@ -2292,7 +2292,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '401':
           description: Unauthorized
         '403':
@@ -2351,7 +2351,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '401':
           description: Unauthorized
         '403':
@@ -2379,7 +2379,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -2415,7 +2415,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -2477,7 +2477,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '204':
           description: No Content
         '401':
@@ -2670,7 +2670,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '401':
           description: Unauthorized
         '403':
@@ -2768,7 +2768,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '201':
           description: Created
         '401':
@@ -2830,7 +2830,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -2863,7 +2863,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '201':
           description: Created
         '401':
@@ -2957,7 +2957,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '201':
           description: Created
         '401':
@@ -3014,7 +3014,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '401':
           description: Unauthorized
         '403':
@@ -3047,7 +3047,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Endpoint»'
+            $ref: '#/definitions/RestResource«Endpoint»'
         '201':
           description: Created
         '401':
@@ -3102,7 +3102,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '401':
           description: Unauthorized
         '403':
@@ -3130,7 +3130,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -3166,7 +3166,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -3228,7 +3228,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '204':
           description: No Content
         '401':
@@ -3295,7 +3295,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '201':
           description: Created
         '401':
@@ -3308,14 +3308,14 @@ paths:
     get:
       tags:
         - Grant Entity
-      summary: Find by Resource
+      summary: Find by RestResource
       operationId: findByResourceGrantUsingGET
       consumes:
         - application/json
       produces:
         - '*/*'
       parameters:
-        - name: resourceName
+        - name: restResourceName
           in: query
           required: false
           type: string
@@ -3356,7 +3356,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '401':
           description: Unauthorized
         '403':
@@ -3389,7 +3389,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '201':
           description: Created
         '401':
@@ -3609,7 +3609,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Method»'
+            $ref: '#/definitions/RestResource«Method»'
         '401':
           description: Unauthorized
         '403':
@@ -3668,7 +3668,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '401':
           description: Unauthorized
         '403':
@@ -3696,7 +3696,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '201':
           description: Created
         '401':
@@ -3732,7 +3732,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '201':
           description: Created
         '401':
@@ -3794,7 +3794,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '204':
           description: No Content
         '401':
@@ -3987,7 +3987,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«DataField»'
+            $ref: '#/definitions/RestResource«DataField»'
         '401':
           description: Unauthorized
         '403':
@@ -4046,7 +4046,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '401':
           description: Unauthorized
         '403':
@@ -4074,7 +4074,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '201':
           description: Created
         '401':
@@ -4110,7 +4110,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '201':
           description: Created
         '401':
@@ -4172,7 +4172,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '204':
           description: No Content
         '401':
@@ -4365,7 +4365,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '401':
           description: Unauthorized
         '403':
@@ -4424,7 +4424,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '401':
           description: Unauthorized
         '403':
@@ -4452,7 +4452,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '201':
           description: Created
         '401':
@@ -4488,7 +4488,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '201':
           description: Created
         '401':
@@ -4550,7 +4550,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '204':
           description: No Content
         '401':
@@ -4617,7 +4617,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '201':
           description: Created
         '401':
@@ -4674,7 +4674,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '401':
           description: Unauthorized
         '403':
@@ -4707,7 +4707,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '201':
           description: Created
         '401':
@@ -4762,7 +4762,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -4790,7 +4790,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -4826,7 +4826,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -4888,7 +4888,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '204':
           description: No Content
         '401':
@@ -5081,7 +5081,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authentication»'
+            $ref: '#/definitions/RestResource«Authentication»'
         '401':
           description: Unauthorized
         '403':
@@ -5179,7 +5179,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Method»'
+            $ref: '#/definitions/RestResource«Method»'
         '201':
           description: Created
         '401':
@@ -5236,7 +5236,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Method»'
+            $ref: '#/definitions/RestResource«Method»'
         '401':
           description: Unauthorized
         '403':
@@ -5269,7 +5269,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Method»'
+            $ref: '#/definitions/RestResource«Method»'
         '201':
           description: Created
         '401':
@@ -5347,7 +5347,7 @@ paths:
   /api/resources:
     get:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: findAllResource
       operationId: findAllResourceUsingGET
       consumes:
@@ -5377,7 +5377,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Resource»'
+            $ref: '#/definitions/Resources«RestResource»'
         '401':
           description: Unauthorized
         '403':
@@ -5386,7 +5386,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: saveResource
       operationId: saveResourceUsingPOST
       consumes:
@@ -5399,12 +5399,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/Resource'
+            $ref: '#/definitions/RestResource'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '201':
           description: Created
         '401':
@@ -5416,7 +5416,7 @@ paths:
   /api/resources/search/findByResourceName:
     get:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: Find by Name
       operationId: findByResourceNameResourceUsingGET
       consumes:
@@ -5424,7 +5424,7 @@ paths:
       produces:
         - '*/*'
       parameters:
-        - name: resourceName
+        - name: restResourceName
           in: query
           description: Name
           required: false
@@ -5433,7 +5433,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«List«Resource»»'
+            $ref: '#/definitions/Resources«List«RestResource»»'
         '401':
           description: Unauthorized
         '403':
@@ -5443,7 +5443,7 @@ paths:
   '/api/resources/{id}':
     get:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: findOneResource
       operationId: findOneResourceUsingGET
       consumes:
@@ -5461,7 +5461,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '401':
           description: Unauthorized
         '403':
@@ -5470,7 +5470,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: saveResource
       operationId: saveResourceUsingPUT
       consumes:
@@ -5489,12 +5489,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/Resource'
+            $ref: '#/definitions/RestResource'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '201':
           description: Created
         '401':
@@ -5505,7 +5505,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - Resource Entity
+        - RestResource Entity
       summary: deleteResource
       operationId: deleteResourceUsingDELETE
       consumes:
@@ -5588,7 +5588,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Rule»'
+            $ref: '#/definitions/RestResource«Rule»'
         '201':
           description: Created
         '401':
@@ -5618,7 +5618,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Rule»'
+            $ref: '#/definitions/RestResource«Rule»'
         '401':
           description: Unauthorized
         '403':
@@ -5651,7 +5651,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Rule»'
+            $ref: '#/definitions/RestResource«Rule»'
         '201':
           description: Created
         '401':
@@ -5706,7 +5706,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -5734,7 +5734,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -5770,7 +5770,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -5832,7 +5832,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '204':
           description: No Content
         '401':
@@ -5860,7 +5860,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '401':
           description: Unauthorized
         '403':
@@ -5888,7 +5888,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -5924,7 +5924,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '201':
           description: Created
         '401':
@@ -5986,7 +5986,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Authorization»'
+            $ref: '#/definitions/RestResource«Authorization»'
         '204':
           description: No Content
         '401':
@@ -6014,7 +6014,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '401':
           description: Unauthorized
         '403':
@@ -6042,7 +6042,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '201':
           description: Created
         '401':
@@ -6078,7 +6078,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '201':
           description: Created
         '401':
@@ -6140,7 +6140,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Identity»'
+            $ref: '#/definitions/RestResource«Identity»'
         '204':
           description: No Content
         '401':
@@ -6168,7 +6168,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '401':
           description: Unauthorized
         '403':
@@ -6196,7 +6196,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '201':
           description: Created
         '401':
@@ -6232,7 +6232,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '201':
           description: Created
         '401':
@@ -6294,7 +6294,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '204':
           description: No Content
         '401':
@@ -6361,7 +6361,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '201':
           description: Created
         '401':
@@ -6418,7 +6418,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '401':
           description: Unauthorized
         '403':
@@ -6451,7 +6451,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Scope»'
+            $ref: '#/definitions/RestResource«Scope»'
         '201':
           description: Created
         '401':
@@ -6506,7 +6506,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '401':
           description: Unauthorized
         '403':
@@ -6534,7 +6534,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -6570,7 +6570,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '201':
           description: Created
         '401':
@@ -6632,7 +6632,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Accessor»'
+            $ref: '#/definitions/RestResource«Accessor»'
         '204':
           description: No Content
         '401':
@@ -6825,7 +6825,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Grant»'
+            $ref: '#/definitions/RestResource«Grant»'
         '401':
           description: Unauthorized
         '403':
@@ -6923,7 +6923,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '201':
           description: Created
         '401':
@@ -6953,7 +6953,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '401':
           description: Unauthorized
         '403':
@@ -6986,7 +6986,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Url»'
+            $ref: '#/definitions/RestResource«Url»'
         '201':
           description: Created
         '401':
@@ -7080,7 +7080,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -7137,7 +7137,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '401':
           description: Unauthorized
         '403':
@@ -7170,7 +7170,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -7225,7 +7225,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '401':
           description: Unauthorized
         '403':
@@ -7253,7 +7253,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -7289,7 +7289,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '201':
           description: Created
         '401':
@@ -7351,7 +7351,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Version»'
+            $ref: '#/definitions/RestResource«Version»'
         '204':
           description: No Content
         '401':
@@ -7379,7 +7379,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Resource»'
+            $ref: '#/definitions/Resources«RestResource»'
         '401':
           description: Unauthorized
         '403':
@@ -7409,7 +7409,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Resource»'
+            $ref: '#/definitions/Resources«RestResource»'
         '201':
           description: Created
         '401':
@@ -7447,7 +7447,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Resource»'
+            $ref: '#/definitions/Resources«RestResource»'
         '201':
           description: Created
         '401':
@@ -7511,7 +7511,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«Resource»'
+            $ref: '#/definitions/Resources«RestResource»'
         '204':
           description: No Content
         '401':
@@ -7544,7 +7544,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resource«Resource»'
+            $ref: '#/definitions/RestResource«RestResource»'
         '401':
           description: Unauthorized
         '403':
@@ -7890,7 +7890,7 @@ definitions:
         items:
           $ref: '#/definitions/DataField'
       resource:
-        $ref: '#/definitions/Resource'
+        $ref: '#/definitions/RestResource'
       searchUrlList:
         type: array
         items:
@@ -8220,7 +8220,7 @@ definitions:
         items:
           type: array
           items:
-            $ref: '#/definitions/Resource'
+            $ref: '#/definitions/RestResource'
       links:
         type: array
         items:
@@ -8268,7 +8268,7 @@ definitions:
       content:
         type: array
         items:
-          $ref: '#/definitions/Resource'
+          $ref: '#/definitions/RestResource'
       links:
         type: array
         items:
@@ -8487,7 +8487,7 @@ definitions:
         items:
           $ref: '#/definitions/DataField'
       resource:
-        $ref: '#/definitions/Resource'
+        $ref: '#/definitions/RestResource'
       searchUrlList:
         type: array
         items:
@@ -8614,7 +8614,7 @@ definitions:
       resourceList:
         type: array
         items:
-          $ref: '#/definitions/Resource'
+          $ref: '#/definitions/RestResource'
       versionName:
         type: string
   Rule:
@@ -8687,7 +8687,7 @@ definitions:
       resourceList:
         type: array
         items:
-          $ref: '#/definitions/Resource'
+          $ref: '#/definitions/RestResource'
       versionName:
         type: string
   View:

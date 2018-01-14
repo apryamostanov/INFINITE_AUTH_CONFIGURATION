@@ -1,7 +1,6 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces
 
 import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.DataField
-import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Resource
 import groovy.transform.CompileStatic
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
