@@ -491,74 +491,170 @@ class T_spring_boot_application implements CommandLineRunner {
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and DOB Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("User_data").first(), p_authentication_repository.findByAuthenticationName("DOB_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of Provisioned User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioned_user_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and Provisioning Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioning_data").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Anonymous", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of Accessor Data").first()], scopeSet: [p_scope_repository.findByScopeName("Anonymous Services").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Read", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Refresh Data").first()], scopeSet: [p_scope_repository.findByScopeName("Main Screen").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data").first(), p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Profile").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(), p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first()], scopeSet: [p_scope_repository.findByScopeName("Update Phone").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first()], scopeSet: [p_scope_repository.findByScopeName("Change Password").first(), p_scope_repository.findByScopeName("Change Security Answers").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), identitySet: [p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first()], scopeSet: []))
+        p_authorization_repository.save(new Authorization(authorizationName: "Anonymous", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
+        p_authorization_repository.save(new Authorization(authorizationName: "Read", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
+        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
+        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
+        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
+        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
         p_token_repository.save(new Token(
+                tokenName: "Anonymous access to Anonymous Services as Owner of Accessor Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(),
                 scope: p_scope_repository.findByScopeName("Anonymous Services").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Read refresh to Main Screen as Owner of User Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
-                durationSeconds: 1800,
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
+                durationSeconds: 2592000,
                 maxUsageCount: null,
-                /*refreshAllowed: 1,
-                refreshDurationSeconds: 2592000,*/
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Read refresh to Main Screen as Owner of User Data (React)",
                 authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                /*refreshAllowed: 1,
-                refreshDurationSeconds: 1800,*/
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Read refresh to Main Screen as Owner of Refresh Data",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
+                durationSeconds: 2592000,
+                maxUsageCount: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Read refresh to Main Screen as Owner of Refresh Data (React)",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Read access to Main Screen as Owner of User Data",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data").first(),
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Read access to Main Screen as Owner of User Data (React)",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 1
         ))
         p_token_repository.save(new Token(
+                tokenName: "Read access to Main Screen as Owner of Refresh Data",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data").first(),
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Read access to Main Screen as Owner of Refresh Data (React)",
+                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
+                scope: p_scope_repository.findByScopeName("Main Screen").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data (React)").first(),
+                accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
+                lookupPriority: 1
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Demographic Updates access to Update Profile as Owner of User Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Demographic Updates access to Update Profile as Owner of Provisioned User Data",
+                authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
+                scope: p_scope_repository.findByScopeName("Update Profile").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Provisioned User Data Usage access as Owner of User Data and Provisioning Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Provisioned User Data Usage").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Security Updates access to Change Password as Owner of User Data and DOB Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Password").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Security Updates access to Change Security Answers as Owner of User Data and DOB Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Security Answers").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0
         ))
         p_token_repository.save(new Token(
+                tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and User Data",
                 authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(),
+                durationSeconds: 30,
+                maxUsageCount: 1,
+                accessor: null,
+                lookupPriority: 0
+        ))
+        p_token_repository.save(new Token(
+                tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and Provisioned User Data",
+                authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
+                scope: p_scope_repository.findByScopeName("Update Phone").first(),
+                identity: p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,

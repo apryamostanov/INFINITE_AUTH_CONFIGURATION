@@ -12,6 +12,8 @@ class Token {
 
     String resourceName = this.getClass().getSimpleName()
 
+    String tokenName
+
     @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor

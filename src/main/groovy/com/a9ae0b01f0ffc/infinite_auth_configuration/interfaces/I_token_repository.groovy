@@ -13,5 +13,6 @@ interface I_token_repository extends PagingAndSortingRepository<Token, Long> {
 
     Set<Token> findByScope(@Param("scope") Scope scope)
 
+    Set<Token> findByTokenName(@Param("tokenName") String tokenName)
 
 }

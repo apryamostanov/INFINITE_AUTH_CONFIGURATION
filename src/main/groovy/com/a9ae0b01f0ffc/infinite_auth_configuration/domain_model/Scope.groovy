@@ -11,7 +11,6 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 @Entity
 class Scope {
 
-
     String resourceName = this.getClass().getSimpleName()
 
     String scopeName = GC_EMPTY_STRING
@@ -27,10 +26,5 @@ class Scope {
 
     @ManyToMany(fetch = FetchType.EAGER)
     Set<Grant> grantSet = new HashSet<Grant>()
-
-    //
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "scopeSet")
-    @OrderColumn
-    Set<Authorization> authorizationSet = new HashSet<Authorization>()
 
 }

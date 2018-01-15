@@ -18,14 +18,6 @@ class Authorization {
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Identity> identitySet = new HashSet<Identity>()
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Scope> scopeSet = new HashSet<Scope>()
-    
     String authorizationName = GC_EMPTY_STRING
 
     @Id
