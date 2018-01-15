@@ -22,8 +22,6 @@ class T_spring_boot_application implements CommandLineRunner {
     @Autowired
     private I_authentication_repository p_authentication_repository
     @Autowired
-    private I_authorization_repository p_authorization_repository
-    @Autowired
     private I_data_field_repository p_data_field_repository
     @Autowired
     private I_endpoint_repository p_endpoint_repository
@@ -491,15 +489,8 @@ class T_spring_boot_application implements CommandLineRunner {
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and DOB Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("User_data").first(), p_authentication_repository.findByAuthenticationName("DOB_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of Provisioned User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioned_user_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and Provisioning Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioning_data").first()]))
-        p_authorization_repository.save(new Authorization(authorizationName: "Anonymous", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
-        p_authorization_repository.save(new Authorization(authorizationName: "Read", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
-        p_authorization_repository.save(new Authorization(authorizationName: "Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
-        p_authorization_repository.save(new Authorization(authorizationName: "Secured Demographic Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
-        p_authorization_repository.save(new Authorization(authorizationName: "Security Updates", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
-        p_authorization_repository.save(new Authorization(authorizationName: "Provisioned User Data Usage", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()))
         p_token_repository.save(new Token(
                 tokenName: "Anonymous access to Anonymous Services as Owner of Accessor Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Anonymous").first(),
                 scope: p_scope_repository.findByScopeName("Anonymous Services").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
@@ -509,7 +500,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
@@ -519,7 +509,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of User Data (React)",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
@@ -529,7 +518,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of Refresh Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
@@ -539,7 +527,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of Refresh Data (React)",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
@@ -549,7 +536,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
@@ -560,7 +546,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of User Data (React)",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
@@ -571,7 +556,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of Refresh Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
                 durationSeconds: 1800,
@@ -582,7 +566,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of Refresh Data (React)",
-                authorization: p_authorization_repository.findByAuthorizationName("Read").first(),
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
                 durationSeconds: 1800,
@@ -593,7 +576,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Demographic Updates access to Update Profile as Owner of User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 30,
@@ -603,7 +585,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Demographic Updates access to Update Profile as Owner of Provisioned User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first(),
                 durationSeconds: 30,
@@ -613,7 +594,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Provisioned User Data Usage access as Owner of User Data and Provisioning Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Provisioned User Data Usage").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
@@ -622,7 +602,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Security Updates access to Change Password as Owner of User Data and DOB Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Password").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
@@ -632,7 +611,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Security Updates access to Change Security Answers as Owner of User Data and DOB Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Security Updates").first(),
                 scope: p_scope_repository.findByScopeName("Change Security Answers").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
@@ -642,7 +620,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(),
                 durationSeconds: 30,
@@ -652,7 +629,6 @@ class T_spring_boot_application implements CommandLineRunner {
         ))
         p_token_repository.save(new Token(
                 tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and Provisioned User Data",
-                authorization: p_authorization_repository.findByAuthorizationName("Secured Demographic Updates").first(),
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first(),
                 durationSeconds: 30,

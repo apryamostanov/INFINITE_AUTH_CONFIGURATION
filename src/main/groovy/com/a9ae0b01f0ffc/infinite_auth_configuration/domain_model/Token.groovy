@@ -18,8 +18,6 @@ class Token {
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    Authorization authorization = GC_NULL_OBJ_REF as Authorization
 
     @ManyToOne(fetch = FetchType.EAGER)
     Identity identity = GC_NULL_OBJ_REF as Identity
