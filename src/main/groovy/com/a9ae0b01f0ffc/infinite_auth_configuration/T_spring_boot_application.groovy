@@ -496,7 +496,8 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access"
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of User Data",
@@ -505,7 +506,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Refresh",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of User Data (React)",
@@ -514,7 +517,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Refresh",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of Refresh Data",
@@ -523,7 +528,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Refresh",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read refresh to Main Screen as Owner of Refresh Data (React)",
@@ -532,7 +539,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Refresh",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of User Data",
@@ -542,7 +551,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 maxUsageCount: null,
                 refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data").first(),
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of User Data (React)",
@@ -552,7 +563,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 maxUsageCount: null,
                 refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 1
+                lookupPriority: 1,
+                tokenType: "Access",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of Refresh Data",
@@ -562,7 +575,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 maxUsageCount: null,
                 refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data").first(),
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Read access to Main Screen as Owner of Refresh Data (React)",
@@ -572,7 +587,9 @@ class T_spring_boot_application implements CommandLineRunner {
                 maxUsageCount: null,
                 refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 1
+                lookupPriority: 1,
+                tokenType: "Access",
+                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Demographic Updates access to Update Profile as Owner of User Data",
@@ -581,7 +598,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Demographic Updates access to Update Profile as Owner of Provisioned User Data",
@@ -590,7 +614,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Provisioned User Data Usage access as Owner of User Data and Provisioning Data",
@@ -598,7 +629,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Security Updates access to Change Password as Owner of User Data and DOB Data",
@@ -607,7 +645,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Security Updates access to Change Security Answers as Owner of User Data and DOB Data",
@@ -616,7 +661,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and User Data",
@@ -625,7 +677,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_token_repository.save(new Token(
                 tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and Provisioned User Data",
@@ -634,7 +693,14 @@ class T_spring_boot_application implements CommandLineRunner {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0
+                lookupPriority: 0,
+                tokenType: "Access",
+                prerequisiteTokenSet: [
+                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                ]
         ))
         p_auth_base_5_context.init_standalone()
         Set<DataField> l_func = new HashSet<DataField>()

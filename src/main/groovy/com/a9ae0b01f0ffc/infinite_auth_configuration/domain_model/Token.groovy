@@ -34,8 +34,11 @@ class Token {
     @ManyToOne(fetch = FetchType.EAGER)
     Token refreshToken
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    Token prerequisiteToken
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    Set<Token> prerequisiteTokenSet
+
+    String tokenType
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
