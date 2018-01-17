@@ -8,11 +8,11 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 
 @CompileStatic
 @Entity
-class Token {
+class Authorization {
 
     String resourceName = this.getClass().getSimpleName()
 
-    String tokenName
+    String authorizationName
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn
@@ -32,13 +32,13 @@ class Token {
     Integer maxUsageCount
 
     @ManyToOne(fetch = FetchType.EAGER)
-    Token refreshToken
+    Authorization refreshAuthorization
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<Token> prerequisiteTokenSet
+    Set<Authorization> prerequisiteAuthorizationSet
 
-    String tokenType
+    String authorizationType
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

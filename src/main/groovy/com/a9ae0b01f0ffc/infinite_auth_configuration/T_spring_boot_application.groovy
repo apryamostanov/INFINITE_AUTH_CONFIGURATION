@@ -40,7 +40,7 @@ class T_spring_boot_application implements CommandLineRunner {
     @Autowired
     private I_grant_repository p_url_repository
     @Autowired
-    private I_token_repository p_token_repository
+    private I_authorization_repository p_authorization_repository
     @Autowired
     private T_auth_base_5_context p_auth_base_5_context
 
@@ -95,7 +95,7 @@ class T_spring_boot_application implements CommandLineRunner {
         p_resource_repository.save(new RestResource(restResourceName: "UserRegistrationValidationParametersEnhanced"))//0,1,2
         p_resource_repository.save(new RestResource(restResourceName: "W2WTransferInitiateEnhanced"))//0,1,2
         p_resource_repository.save(new RestResource(restResourceName: "Authenticate"))//0,1
-        p_resource_repository.save(new RestResource(restResourceName: "RefreshToken"))//0,1
+        p_resource_repository.save(new RestResource(restResourceName: "RefreshAuthorization"))//0,1
         p_resource_repository.save(new RestResource(restResourceName: "ForgotPIN"))//2
         p_resource_repository.save(new RestResource(restResourceName: "ForgotPINValidationParameters"))//2
         p_resource_repository.save(new RestResource(restResourceName: "GenerateOTP"))//2
@@ -161,7 +161,7 @@ class T_spring_boot_application implements CommandLineRunner {
                 p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first(),
                 p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first(),
                 p_resource_repository.findByRestResourceName("Authenticate").first(),
-                p_resource_repository.findByRestResourceName("RefreshToken").first()
+                p_resource_repository.findByRestResourceName("RefreshAuthorization").first()
         ]))
         p_version_repository.save(new Version(versionName: "1.0.x", resourceSet: [
                 p_resource_repository.findByRestResourceName("CardActivationSS").first(),
@@ -191,7 +191,7 @@ class T_spring_boot_application implements CommandLineRunner {
                 p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first(),
                 p_resource_repository.findByRestResourceName("W2WTransferInitiateEnhanced").first(),
                 p_resource_repository.findByRestResourceName("Authenticate").first(),
-                p_resource_repository.findByRestResourceName("RefreshToken").first()
+                p_resource_repository.findByRestResourceName("RefreshAuthorization").first()
         ]))
         p_version_repository.save(new Version(versionName: "2.0.x", resourceSet: [
                 p_resource_repository.findByRestResourceName("CardActivationSS").first(),
@@ -376,8 +376,8 @@ class T_spring_boot_application implements CommandLineRunner {
         p_data_field_repository.save(new DataField(fieldName: "password", fieldValue: "%PASSWORD%"))
         p_data_field_repository.save(new DataField(fieldName: "proxy_number", fieldValue: "%PROXYNUMBER%"))
         p_data_field_repository.save(new DataField(fieldName: "account_number", fieldValue: "%ACCOUNTNUMBER%"))
-        p_data_field_repository.save(new DataField(fieldName: "old_access_token", fieldValue: "%OLDACCESSTOKEN%"))
-        p_data_field_repository.save(new DataField(fieldName: "refresh_token", fieldValue: "%REFRESHTOKEN%"))
+        p_data_field_repository.save(new DataField(fieldName: "old_access_authorization", fieldValue: "%OLDACCESSAUTHORIZATION%"))
+        p_data_field_repository.save(new DataField(fieldName: "refresh_authorization", fieldValue: "%REFRESHAUTHORIZATION%"))
         p_data_field_repository.save(new DataField(fieldName: "otp_id", fieldValue: "%OTPID%"))
         p_data_field_repository.save(new DataField(fieldName: "OTP", fieldValue: "%OTP%"))
         p_data_field_repository.save(new DataField(fieldName: "otp", fieldValue: "%OTP%"))
@@ -423,9 +423,9 @@ class T_spring_boot_application implements CommandLineRunner {
         ]))
         p_authentication_repository.save(new Authentication(authenticationName: "Refresh_data", publicDataFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
-                p_data_field_repository.findByFieldNameAndFieldValue("old_access_token", "%OLDACCESSTOKEN%").first()
+                p_data_field_repository.findByFieldNameAndFieldValue("old_access_authorization", "%OLDACCESSAUTHORIZATION%").first()
         ], privateDataFieldSet: [
-                p_data_field_repository.findByFieldNameAndFieldValue("refresh_token", "%REFRESHTOKEN%").first()
+                p_data_field_repository.findByFieldNameAndFieldValue("refresh_authorization", "%REFRESHAUTHORIZATION%").first()
         ], functionalFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("card_type_id_enhanced", "%CARDTYPEIDENHANCED%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("login_flag", "%LOGINFLAG%").first(),
@@ -489,217 +489,217 @@ class T_spring_boot_application implements CommandLineRunner {
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and DOB Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("User_data").first(), p_authentication_repository.findByAuthenticationName("DOB_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of Provisioned User Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioned_user_data").first()]))
         p_identity_repository.save(new Identity(identityName: "Owner of User Data and Provisioning Data", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), authenticationSet: [p_authentication_repository.findByAuthenticationName("Provisioning_data").first()]))
-        p_token_repository.save(new Token(
-                tokenName: "Anonymous access to Anonymous Services as Owner of Accessor Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Anonymous access to Anonymous Services as Owner of Accessor Data",
                 scope: p_scope_repository.findByScopeName("Anonymous Services").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access"
+                authorizationType: "Access"
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read refresh to Main Screen as Owner of User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read refresh to Main Screen as Owner of User Data",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Refresh",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Refresh",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read refresh to Main Screen as Owner of User Data (React)",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read refresh to Main Screen as Owner of User Data (React)",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 0,
-                tokenType: "Refresh",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Refresh",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read refresh to Main Screen as Owner of Refresh Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read refresh to Main Screen as Owner of Refresh Data",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Refresh",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Refresh",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read refresh to Main Screen as Owner of Refresh Data (React)",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read refresh to Main Screen as Owner of Refresh Data (React)",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 0,
-                tokenType: "Refresh",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Refresh",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read access to Main Screen as Owner of User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read access to Main Screen as Owner of User Data",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data").first(),
+                refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of User Data").first(),
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read access to Main Screen as Owner of User Data (React)",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read access to Main Screen as Owner of User Data (React)",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of User Data (React)").first(),
+                refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of User Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 1,
-                tokenType: "Access",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read access to Main Screen as Owner of Refresh Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read access to Main Screen as Owner of Refresh Data",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data").first(),
+                refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of Refresh Data").first(),
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Read access to Main Screen as Owner of Refresh Data (React)",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Read access to Main Screen as Owner of Refresh Data (React)",
                 scope: p_scope_repository.findByScopeName("Main Screen").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Refresh Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                refreshToken: p_token_repository.findByTokenName("Read refresh to Main Screen as Owner of Refresh Data (React)").first(),
+                refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of Refresh Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 1,
-                tokenType: "Access",
-                prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Demographic Updates access to Update Profile as Owner of User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Demographic Updates access to Update Profile as Owner of User Data",
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Demographic Updates access to Update Profile as Owner of Provisioned User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Demographic Updates access to Update Profile as Owner of Provisioned User Data",
                 scope: p_scope_repository.findByScopeName("Update Profile").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Provisioned User Data Usage access as Owner of User Data and Provisioning Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Provisioned User Data Usage access as Owner of User Data and Provisioning Data",
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Security Updates access to Change Password as Owner of User Data and DOB Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Security Updates access to Change Password as Owner of User Data and DOB Data",
                 scope: p_scope_repository.findByScopeName("Change Password").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Security Updates access to Change Security Answers as Owner of User Data and DOB Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Security Updates access to Change Security Answers as Owner of User Data and DOB Data",
                 scope: p_scope_repository.findByScopeName("Change Security Answers").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and User Data",
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
-        p_token_repository.save(new Token(
-                tokenName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and Provisioned User Data",
+        p_authorization_repository.save(new Authorization(
+                authorizationName: "Secured Demographic Updates access to Update Phone as Owner of OTP Data and Provisioned User Data",
                 scope: p_scope_repository.findByScopeName("Update Phone").first(),
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
                 lookupPriority: 0,
-                tokenType: "Access",
-                prerequisiteTokenSet: [
-                        p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of User Data (React)").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data").first()
-                        , p_token_repository.findByTokenName("Read access to Main Screen as Owner of Refresh Data (React)").first()
+                authorizationType: "Access",
+                prerequisiteAuthorizationSet: [
+                        p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data (React)").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data").first()
+                        , p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of Refresh Data (React)").first()
                 ]
         ))
         p_auth_base_5_context.init_standalone()
