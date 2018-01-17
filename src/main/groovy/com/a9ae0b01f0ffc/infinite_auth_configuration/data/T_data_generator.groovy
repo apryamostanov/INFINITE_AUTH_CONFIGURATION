@@ -33,29 +33,29 @@ class T_data_generator {
     private I_authorization_repository p_authorization_repository
 
     @Autowired
-    RestResourceGenerator p_RestResourceGenerator
+    G01_RestResourceGenerator p_RestResourceGenerator
     @Autowired
-    VersionGenerator p_VersionGenerator
+    G02_VersionGenerator p_VersionGenerator
     @Autowired
-    EndpointGenerator p_EndpointGenerator
+    G03_EndpointGenerator p_EndpointGenerator
     @Autowired
-    AccessorGenerator p_AccessorGenerator
+    G04_AccessorGenerator p_AccessorGenerator
     @Autowired
-    MethodGenerator p_MethodGenerator
+    G05_MethodGenerator p_MethodGenerator
     @Autowired
-    DataFieldGenerator p_DataFieldGenerator
+    G06_DataFieldGenerator p_DataFieldGenerator
     @Autowired
-    UrlGenerator p_UrlGenerator
+    G07_UrlGenerator p_UrlGenerator
     @Autowired
-    GrantGenerator p_GrantGenerator
+    G08_GrantGenerator p_GrantGenerator
     @Autowired
-    ScopeGenerator p_ScopeGenerator
+    G09_ScopeGenerator p_ScopeGenerator
     @Autowired
-    AuthenticationGenerator p_AuthenticationGenerator
+    G10_AuthenticationGenerator p_AuthenticationGenerator
     @Autowired
-    IdentityGenerator p_IdentityGenerator
+    G11_IdentityGenerator p_IdentityGenerator
     @Autowired
-    AuthorizationGenerator p_AuthorizationGenerator
+    G12_AuthorizationGenerator p_AuthorizationGenerator
 
     void generate_data() {
         p_RestResourceGenerator.generate_data(p_resource_repository)

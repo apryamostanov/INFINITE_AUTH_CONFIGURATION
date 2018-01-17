@@ -8,11 +8,11 @@ import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.I_scope_reposito
 import org.springframework.stereotype.Component
 
 @Component
-class ScopeGenerator {
+class G09_ScopeGenerator {
 
     void generate_data(I_scope_repository p_scope_repository, I_grant_repository p_grant_repository, I_accessor_repository p_accessor_repository, I_resource_repository p_resource_repository) {
-
-        p_scope_repository.save(new Scope(scopeName: "Anonymous Services", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        Set<Scope> l_entity_set = new HashSet<Scope>()
+        l_entity_set.add(new Scope(scopeName: "Anonymous Services", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistration").first()).first(),
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UserRegistrationValidationParametersEnhanced").first()).first(),
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
@@ -24,7 +24,7 @@ class ScopeGenerator {
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ForgotUserIdValidationParametersEnhanced").first()).first()
         ]))
 
-        p_scope_repository.save(new Scope(scopeName: "Main Screen", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        l_entity_set.add(new Scope(scopeName: "Main Screen", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetCardDetailEnhanced").first()).first(),
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetCVC").first()).first(),
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("CardActivationSS").first()).first(),
@@ -61,21 +61,22 @@ class ScopeGenerator {
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first()).first()
         ]))
 
-        p_scope_repository.save(new Scope(scopeName: "Update Profile", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        l_entity_set.add(new Scope(scopeName: "Update Profile", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UpdateProfileWithoutPhone").first()).first()
         ]))
 
-        p_scope_repository.save(new Scope(scopeName: "Update Phone", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        l_entity_set.add(new Scope(scopeName: "Update Phone", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("UpdateProfileWithPhone").first()).first()
         ]))
 
-        p_scope_repository.save(new Scope(scopeName: "Change Password", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        l_entity_set.add(new Scope(scopeName: "Change Password", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("ChangePassword").first()).first()
         ]))
 
-        p_scope_repository.save(new Scope(scopeName: "Change Security Answers", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
+        l_entity_set.add(new Scope(scopeName: "Change Security Answers", accessor: p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first(), grantSet: [
                 p_grant_repository.findByRestResource(p_resource_repository.findByRestResourceName("SetAnswers").first()).first()
         ]))
+        p_scope_repository.save(l_entity_set)
     }
 
 }

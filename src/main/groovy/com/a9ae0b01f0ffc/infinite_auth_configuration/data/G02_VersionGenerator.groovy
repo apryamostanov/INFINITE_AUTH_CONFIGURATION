@@ -1,14 +1,16 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration.data
 
+import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version
 import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.I_resource_repository
 import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.I_version_repository
 import org.springframework.stereotype.Component
 
 @Component
-class VersionGenerator {
+class G02_VersionGenerator {
 
     void generate_data(I_version_repository p_version_repository, I_resource_repository p_resource_repository) {
-        p_version_repository.save(new com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version(versionName: "0.0.x", resourceSet: [
+        Set<Version> l_version_set = new HashSet<Version>()
+        l_version_set.add(new Version(versionName: "0.0.x", resourceSet: [
                 p_resource_repository.findByRestResourceName("AccountCreation").first(),
                 p_resource_repository.findByRestResourceName("AddWalletToAccount").first(),
                 p_resource_repository.findByRestResourceName("CardActivationSS").first(),
@@ -59,7 +61,7 @@ class VersionGenerator {
                 p_resource_repository.findByRestResourceName("Authenticate").first(),
                 p_resource_repository.findByRestResourceName("RefreshAuthorization").first()
         ]))
-        p_version_repository.save(new com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version(versionName: "1.0.x", resourceSet: [
+        l_version_set.add(new Version(versionName: "1.0.x", resourceSet: [
                 p_resource_repository.findByRestResourceName("CardActivationSS").first(),
                 p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first(),
                 p_resource_repository.findByRestResourceName("ChangePassword").first(),
@@ -89,7 +91,7 @@ class VersionGenerator {
                 p_resource_repository.findByRestResourceName("Authenticate").first(),
                 p_resource_repository.findByRestResourceName("RefreshAuthorization").first()
         ]))
-        p_version_repository.save(new com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version(versionName: "2.0.x", resourceSet: [
+        l_version_set.add(new Version(versionName: "2.0.x", resourceSet: [
                 p_resource_repository.findByRestResourceName("CardActivationSS").first(),
                 p_resource_repository.findByRestResourceName("CardLockUnlockRequest").first(),
                 p_resource_repository.findByRestResourceName("ChangePassword").first(),
@@ -132,6 +134,7 @@ class VersionGenerator {
                 p_resource_repository.findByRestResourceName("Transaction_attributes").first(),
                 p_resource_repository.findByRestResourceName("GetProductParametersEnhanced").first()
         ]))
+        p_version_repository.save(l_version_set)
     }
 
 }

@@ -5,10 +5,12 @@ import com.a9ae0b01f0ffc.infinite_auth_configuration.interfaces.I_url_repository
 import org.springframework.stereotype.Component
 
 @Component
-class UrlGenerator {
+class G07_UrlGenerator {
 
     void generate_data(I_url_repository p_url_repository) {
-        p_url_repository.save(new Url(urlName: "/%ACCESSORID%/*/*/*"))
+        Set<Url> l_entity_set = new HashSet<Url>()
+        l_entity_set.add(new Url(urlName: "/%ACCESSORID%/*/*/*"))
+        p_url_repository.save(l_entity_set)
     }
 
 
