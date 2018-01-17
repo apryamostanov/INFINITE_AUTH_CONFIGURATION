@@ -409,13 +409,13 @@ class T_spring_boot_application implements CommandLineRunner {
                 p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first()
         ], privateDataFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("password", "%PASSWORD%").first()
-        ], keyFieldSet: [
+        ], functionalFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("card_type_id_enhanced", "%CARDTYPEIDENHANCED%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("login_flag", "%LOGINFLAG%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("error_number", "%ERRORNUMBER%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
-        ], functionalFieldSet: [
+        ], keyFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("product_id", "%PRODUCTID%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
@@ -426,13 +426,13 @@ class T_spring_boot_application implements CommandLineRunner {
                 p_data_field_repository.findByFieldNameAndFieldValue("old_access_token", "%OLDACCESSTOKEN%").first()
         ], privateDataFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("refresh_token", "%REFRESHTOKEN%").first()
-        ], keyFieldSet: [
+        ], functionalFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("card_type_id_enhanced", "%CARDTYPEIDENHANCED%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("login_flag", "%LOGINFLAG%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("error_number", "%ERRORNUMBER%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("account_number", "%ACCOUNTNUMBER%").first()
-        ], functionalFieldSet: [
+        ], keyFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("product_id", "%PRODUCTID%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("username", "%USERNAME%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("proxy_number", "%PROXYNUMBER%").first(),
@@ -516,7 +516,7 @@ class T_spring_boot_application implements CommandLineRunner {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 0,
                 tokenType: "Refresh",
                 prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
@@ -538,7 +538,7 @@ class T_spring_boot_application implements CommandLineRunner {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
                 lookupPriority: 0,
                 tokenType: "Refresh",
                 prerequisiteTokenSet: [p_token_repository.findByTokenName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
