@@ -23,6 +23,7 @@ class Accessor {
     String appName = GC_EMPTY_STRING
 
     /**@ApiModelProperty(example = "Any accessor Multi Currency 1.0.x", value = "Output field. Internal name of the accessor record.")*/
+    @Column(unique = true)
     String accessorName = GC_EMPTY_STRING
 
     /**@ApiModelProperty(example = "React", value = "Matching field. Client software platform name (iOS, Android, React), hardcoded on the client side. E.g. name of the app. Supported wildcard value \"Any\".")*/

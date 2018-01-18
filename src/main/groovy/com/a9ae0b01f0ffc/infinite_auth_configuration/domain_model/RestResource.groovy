@@ -13,6 +13,7 @@ class RestResource {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String restResourceName = GC_EMPTY_STRING
 
     @Id

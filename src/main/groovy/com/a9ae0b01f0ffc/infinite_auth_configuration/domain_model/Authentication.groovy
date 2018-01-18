@@ -15,6 +15,7 @@ class Authentication {
     String resourceName = this.getClass().getSimpleName()
 
     /**@ApiModelProperty(example = "User_data", value = "Defines the Granting Server -> Authentication Provider name")*/
+    @Column(unique = true)
     String authenticationName = GC_EMPTY_STRING
 
     /**@ApiModelProperty(value = "Public portion of Authentication data, required to be provided by accessors")*/

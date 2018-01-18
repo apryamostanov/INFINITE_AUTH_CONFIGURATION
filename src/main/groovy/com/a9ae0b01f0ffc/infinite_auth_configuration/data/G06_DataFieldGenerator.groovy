@@ -43,7 +43,7 @@ class G06_DataFieldGenerator {
         l_entity_set.add(new DataField(fieldName: "login_flag", fieldValue: "%LOGINFLAG%"))
         l_entity_set.add(new DataField(fieldName: "error_number", fieldValue: "%ERRORNUMBER%"))
         l_entity_set.add(new DataField(fieldName: "product_id", fieldValue: "%PRODUCTID%"))
-        l_entity_set.add(new DataField(fieldName: "username", fieldValue: "%USERNAME%"))
+        //l_entity_set.add(new DataField(fieldName: "username", fieldValue: "%USERNAME%"))
         p_data_field_repository.save(l_entity_set)
     }
 

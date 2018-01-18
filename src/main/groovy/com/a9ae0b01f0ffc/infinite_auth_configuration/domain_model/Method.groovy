@@ -13,6 +13,7 @@ class Method {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String methodName = GC_EMPTY_STRING
 
     @Id

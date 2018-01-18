@@ -15,6 +15,7 @@ class Version {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String versionName = GC_EMPTY_STRING
 
     @OneToOne(fetch = FetchType.EAGER)

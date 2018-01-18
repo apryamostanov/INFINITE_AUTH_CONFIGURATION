@@ -13,6 +13,7 @@ class Url {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String urlName = GC_EMPTY_STRING
 
     @Id

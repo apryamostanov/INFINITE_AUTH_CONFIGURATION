@@ -14,6 +14,7 @@ class Identity {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String identityName = GC_EMPTY_STRING
 
     @ManyToMany(fetch = FetchType.EAGER)

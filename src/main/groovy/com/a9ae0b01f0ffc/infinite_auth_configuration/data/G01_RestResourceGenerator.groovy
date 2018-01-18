@@ -55,7 +55,7 @@ class G01_RestResourceGenerator {
 //0,1,2
         l_resource_set.add(new RestResource(restResourceName: "ForgotUserIdValidationParameterEnhanced"))//0
         l_resource_set.add(new RestResource(restResourceName: "GetCardDetailEnhanced"))//0,1,2
-        l_resource_set.add(new RestResource(restResourceName: "GetTransactionHistory"))//0,1,2
+        //l_resource_set.add(new RestResource(restResourceName: "GetTransactionHistory"))//0,1,2
         l_resource_set.add(new RestResource(restResourceName: "ResetPasswordEnhanced"))//0
         l_resource_set.add(new RestResource(restResourceName: "UserRegistrationValidationParametersEnhanced"))
 //0,1,2
@@ -68,7 +68,7 @@ class G01_RestResourceGenerator {
         l_resource_set.add(new RestResource(restResourceName: "SendOTPSMS"))//2
         l_resource_set.add(new RestResource(restResourceName: "ValidateOTP"))//2
         l_resource_set.add(new RestResource(restResourceName: "ValidateOTPSMS"))//2
-        l_resource_set.add(new RestResource(restResourceName: "ForgotUserId"))//2
+        //l_resource_set.add(new RestResource(restResourceName: "ForgotUserId"))//2
         l_resource_set.add(new RestResource(restResourceName: "ForgotUserIdValidationParametersEnhanced"))//2
         l_resource_set.add(new RestResource(restResourceName: "UpdateProfileWithoutPhone"))//2
         l_resource_set.add(new RestResource(restResourceName: "UpdateProfileWithPhone"))//2

@@ -15,6 +15,7 @@ class Endpoint {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String endpointName = GC_EMPTY_STRING
 
     @ManyToOne(fetch = FetchType.EAGER)

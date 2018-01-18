@@ -13,6 +13,7 @@ class DataField {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String fieldName = GC_EMPTY_STRING
     String fieldValue = GC_EMPTY_STRING
 
