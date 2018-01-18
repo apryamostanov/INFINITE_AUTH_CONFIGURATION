@@ -35,8 +35,8 @@ class Accessor {
     /**@ApiModelProperty(example = "john.doe", value = "Matching field. Application user. Allows overriding authorization rules level of specific user. Supported wildcard value \"Any\".")*/
     String user = GC_EMPTY_STRING
 
-    /**@ApiModelProperty(example = "1101", value = "Matching field. Program manager/business associate ID (in case there are multiple app names for same FIID) - hardcoded at app. Allows overriding authorization rules level of specific FIID. Supported wildcard value \"Any\".")*/
-    String FIID = GC_EMPTY_STRING
+    /**@ApiModelProperty(example = "1101", value = "Matching field. Program manager/business associate ID (in case there are multiple app names for same fiid) - hardcoded at app. Allows overriding authorization rules level of specific fiid. Supported wildcard value \"Any\".")*/
+    String fiid = GC_EMPTY_STRING
 
     /**@ApiModelProperty(example = "2209", value = "Matching field. Application product. Allows overriding authorization rules level of specific product. Supported wildcard value \"Any\".")*/
     String product = GC_EMPTY_STRING
@@ -50,10 +50,6 @@ class Accessor {
     /**@ApiModelProperty(value = "Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpoint. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpoint configuration.")*/
     @ManyToOne(fetch = FetchType.EAGER)
     Endpoint endpoint = GC_NULL_OBJ_REF as Endpoint
-
-    /**@ApiModelProperty(value = "Optional output field. Indicates the accessor record containing configuration groups (Authorizations, Identities, Scopes) - which are not defined at this child accessor level")*/
-    @ManyToOne(fetch = FetchType.EAGER)
-    Accessor parentAccessor = GC_NULL_OBJ_REF as Accessor
 
     /**@ApiModelProperty(value = "Matching field. API version (combination of minor and major versions). Allows overriding authorization rules level of specific API version. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpoint configuration.")*/
     @ManyToOne(fetch = FetchType.EAGER)

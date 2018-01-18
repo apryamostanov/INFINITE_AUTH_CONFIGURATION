@@ -13,7 +13,7 @@ class G10_AuthenticationGenerator {
         l_entity_set.add(new Authentication(authenticationName: "Accessor_data", publicDataFieldSet: [
                 p_data_field_repository.findByFieldNameAndFieldValue("accessor_id", "%ACCESSORID%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("platform", "%PLATFORM%").first(),
-                p_data_field_repository.findByFieldNameAndFieldValue("FIID", "%FIID%").first(),
+                p_data_field_repository.findByFieldNameAndFieldValue("fiid", "%fiid%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("api_version", "%APIVERSION%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("language", "%LANGUAGE%").first(),
                 p_data_field_repository.findByFieldNameAndFieldValue("specific_data", "%SPECIFICDATA%").first()

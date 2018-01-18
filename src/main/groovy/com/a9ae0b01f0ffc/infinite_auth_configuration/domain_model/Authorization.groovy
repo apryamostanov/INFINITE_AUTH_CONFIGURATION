@@ -26,8 +26,6 @@ class Authorization {
     @ManyToOne(fetch = FetchType.EAGER)
     Scope scope = GC_NULL_OBJ_REF as Scope
 
-    Integer lookupPriority = GC_NULL_OBJ_REF as Integer
-
     Integer durationSeconds
 
     Integer maxUsageCount

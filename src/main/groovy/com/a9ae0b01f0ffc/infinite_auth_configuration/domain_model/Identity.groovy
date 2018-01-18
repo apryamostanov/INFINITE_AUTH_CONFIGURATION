@@ -5,7 +5,6 @@ import groovy.transform.CompileStatic
 import javax.persistence.*
 
 import static base.T_common_base_1_const.GC_EMPTY_STRING
-import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 
 @CompileStatic
 @Entity
@@ -20,10 +19,6 @@ class Identity {
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
     Set<Authentication> authenticationSet = new HashSet<Authentication>()
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @OrderColumn
-    Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

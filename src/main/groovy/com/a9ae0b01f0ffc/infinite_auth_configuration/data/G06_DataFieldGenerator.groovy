@@ -20,7 +20,7 @@ class G06_DataFieldGenerator {
 
         l_entity_set.add(new DataField(fieldName: "app_name", fieldValue: "%APPNAME%"))
         l_entity_set.add(new DataField(fieldName: "platform", fieldValue: "%PLATFORM%"))
-        l_entity_set.add(new DataField(fieldName: "FIID", fieldValue: "%FIID%"))
+        l_entity_set.add(new DataField(fieldName: "fiid", fieldValue: "%fiid%"))
         l_entity_set.add(new DataField(fieldName: "api_version", fieldValue: "%APIVERSION%"))
         l_entity_set.add(new DataField(fieldName: "app_version", fieldValue: "%APPVERSION%"))
         l_entity_set.add(new DataField(fieldName: "language", fieldValue: "%LANGUAGE%"))

@@ -12,4 +12,6 @@ interface I_accessor_repository extends PagingAndSortingRepository<Accessor, Lon
 
     Set<Accessor> findByAccessorName(@Param("accessorName") String accessorName)
 
+
+
 }

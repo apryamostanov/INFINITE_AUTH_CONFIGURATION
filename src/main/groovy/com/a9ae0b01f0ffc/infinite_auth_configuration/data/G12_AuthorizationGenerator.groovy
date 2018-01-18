@@ -19,7 +19,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access"
         ))
         p_authorization_repository.save(l_entity_set)
@@ -31,7 +30,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -42,7 +40,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 0,
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -53,7 +50,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -64,7 +60,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 0,
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -78,7 +73,6 @@ class G12_AuthorizationGenerator {
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of User Data").first(),
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -90,7 +84,6 @@ class G12_AuthorizationGenerator {
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of User Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 1,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -102,7 +95,6 @@ class G12_AuthorizationGenerator {
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of Refresh Data").first(),
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -114,7 +106,6 @@ class G12_AuthorizationGenerator {
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Read refresh to Main Screen as Owner of Refresh Data (React)").first(),
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                lookupPriority: 1,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [p_authorization_repository.findByAuthorizationName("Anonymous access to Anonymous Services as Owner of Accessor Data").first()]
         ))
@@ -127,7 +118,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -143,7 +133,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -158,7 +147,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -174,7 +162,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -190,7 +177,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -206,7 +192,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
@@ -222,7 +207,6 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 30,
                 maxUsageCount: 1,
                 accessor: null,
-                lookupPriority: 0,
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: [
                         p_authorization_repository.findByAuthorizationName("Read access to Main Screen as Owner of User Data").first()
