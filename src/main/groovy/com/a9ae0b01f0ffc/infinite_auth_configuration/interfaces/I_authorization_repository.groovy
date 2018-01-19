@@ -15,4 +15,6 @@ interface I_authorization_repository extends PagingAndSortingRepository<Authoriz
 
     Set<Authorization> findByAuthorizationName(@Param("authorizationName") String authorizationName)
 
+    Set<Authorization> findByScopeAndAuthorizationType(@Param("scope") Scope scope, @Param("authorizationType") String authorizationType)
+
 }

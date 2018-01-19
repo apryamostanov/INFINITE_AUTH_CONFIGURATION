@@ -19,9 +19,9 @@ class Authorization {
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    Identity identity = GC_NULL_OBJ_REF as Identity
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    Set<Authentication> authenticationSet = new HashSet<Authentication>()
 
     @ManyToOne(fetch = FetchType.EAGER)
     Scope scope = GC_NULL_OBJ_REF as Scope
