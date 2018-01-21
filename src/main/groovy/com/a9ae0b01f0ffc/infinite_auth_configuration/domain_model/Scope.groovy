@@ -13,7 +13,6 @@ class Scope {
 
     String resourceName = this.getClass().getSimpleName()
 
-    @Column(unique = true)
     String scopeName = GC_EMPTY_STRING
 
     @ManyToOne(fetch = FetchType.EAGER)
