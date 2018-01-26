@@ -10,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 @RepositoryRestResource
 interface I_data_field_repository extends PagingAndSortingRepository<DataField, Long> {
 
-    Set<DataField> findByFieldNameAndFieldValue(@Param("fieldName") String fieldName,@Param("fieldValue")  String fieldValue)
+    Set<DataField> findByFieldName(@Param("fieldName") String fieldName)
 
 }

@@ -20,15 +20,10 @@ class Grant {
     @OrderColumn
     Set<Method> methodSet = new HashSet<Method>()
 
-    /*Priority 3*/
-    /*Ownership by another restResource with existing grant/access*/
-    @ManyToOne(fetch = FetchType.EAGER)
-    Grant parentGrant = GC_NULL_OBJ_REF as Grant
-
     /*Priority 2*/
     /*/{$username}*/
     @ManyToOne(fetch = FetchType.EAGER)
-    Url url = GC_NULL_OBJ_REF as Url
+    Url selfUrl = GC_NULL_OBJ_REF as Url
 
     /*Priority 1*/
     /*/search/findByIdAndUsername?id=*&username=$username}*/
@@ -37,7 +32,7 @@ class Grant {
     @OrderColumn
     Set<Url> searchUrlSet = new HashSet<Url>()
 
-    /*Priority 4*/
+    /*Priority 3*/
     @ManyToMany(fetch = FetchType.EAGER)
     Set<DataField> payloadKeyFieldSet = new HashSet<DataField>()
 
