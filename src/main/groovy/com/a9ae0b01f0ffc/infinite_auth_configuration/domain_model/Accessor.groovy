@@ -1,6 +1,6 @@
 package com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model
 
-import com.a9ae0b01f0ffc.infinite_auth_configuration.domain_model.Version
+
 import groovy.transform.CompileStatic
 
 import javax.persistence.*
@@ -32,9 +32,6 @@ class Accessor {
     /**@ApiModelProperty(example = "0.6.1", value = "Matching field. Client software platform name (iOS, Android, React), hardcoded on the client side. E.g. name of the app. Supported wildcard value \"Any\".")*/
     String appVersion = GC_EMPTY_STRING
 
-    /**@ApiModelProperty(example = "john.doe", value = "Matching field. Application user. Allows overriding authorization rules level of specific user. Supported wildcard value \"Any\".")*/
-    String user = GC_EMPTY_STRING
-
     /**@ApiModelProperty(example = "1101", value = "Matching field. Program manager/business associate ID (in case there are multiple app names for same fiid) - hardcoded at app. Allows overriding authorization rules level of specific fiid. Supported wildcard value \"Any\".")*/
     String fiid = GC_EMPTY_STRING
 
@@ -47,13 +44,11 @@ class Accessor {
     /**@ApiModelProperty(example = "0", value = "Optional output field. Indicates that this specific accessor is banned - for Accessor authentication provider. E.g. to restrict clients with outdated unsupported API versions")*/
     Integer isForbidden = GC_NULL_OBJ_REF as Integer
 
-    /**@ApiModelProperty(value = "Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpoint. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpoint configuration.")*/
-    @ManyToOne(fetch = FetchType.EAGER)
-    Endpoint endpoint = GC_NULL_OBJ_REF as Endpoint
+    /**@ApiModelProperty(value = "Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpointName. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpointName configuration.")*/
+    String endpointName = GC_EMPTY_STRING
 
-    /**@ApiModelProperty(value = "Matching field. API version (combination of minor and major versions). Allows overriding authorization rules level of specific API version. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpoint configuration.")*/
-    @ManyToOne(fetch = FetchType.EAGER)
-    Version apiVersion = GC_NULL_OBJ_REF as Version
+    /**@ApiModelProperty(value = "Matching field. API version (combination of minor and major versions). Allows overriding authorization rules level of specific API version. Supported wildcard value \"null\". Same value should be in Authorization Validation web app endpointName configuration.")*/
+    String apiVersionName = GC_EMPTY_STRING
 
     /**@ApiModelProperty(example = "1", value = "Accessor id, generated field")*/
     @Id

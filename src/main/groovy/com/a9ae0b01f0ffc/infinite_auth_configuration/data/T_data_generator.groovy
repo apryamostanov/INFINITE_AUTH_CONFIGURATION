@@ -16,13 +16,9 @@ class T_data_generator {
     @Autowired
     private I_data_field_repository p_data_field_repository
     @Autowired
-    private I_endpoint_repository p_endpoint_repository
-    @Autowired
     private I_method_repository p_method_repository
     @Autowired
     private I_scope_repository p_scope_repository
-    @Autowired
-    private I_version_repository p_version_repository
     @Autowired
     private I_grant_repository p_grant_repository
     @Autowired
@@ -32,10 +28,6 @@ class T_data_generator {
 
     @Autowired
     G01_RestResourceGenerator p_RestResourceGenerator
-    @Autowired
-    G02_VersionGenerator p_VersionGenerator
-    @Autowired
-    G03_EndpointGenerator p_EndpointGenerator
     @Autowired
     G04_AccessorGenerator p_AccessorGenerator
     @Autowired
@@ -55,9 +47,7 @@ class T_data_generator {
 
     void generate_data() {
         p_RestResourceGenerator.generate_data(p_resource_repository)
-        p_VersionGenerator.generate_data(p_version_repository, p_resource_repository)
-        p_EndpointGenerator.generate_data(p_endpoint_repository, p_version_repository)
-        p_AccessorGenerator.generate_data(p_accessor_repository, p_endpoint_repository, p_version_repository)
+        p_AccessorGenerator.generate_data(p_accessor_repository)
         p_MethodGenerator.generate_data(p_method_repository)
         p_DataFieldGenerator.generate_data(p_data_field_repository)
         p_UrlGenerator.generate_data(p_url_repository)

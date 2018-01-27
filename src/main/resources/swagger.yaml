@@ -7761,7 +7761,7 @@ definitions:
         example: 0.6.1
         description: 'Matching field. Client software platform name (iOS, Android, React), hardcoded on the client side. E.g. name of the app. Supported wildcard value "Any".'
       endpoint:
-        description: Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpoint. Supported wildcard value "null". Same value should be in Authorization Validation web app endpoint configuration.
+        description: Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpointName. Supported wildcard value "null". Same value should be in Authorization Validation web app endpointName configuration.
         $ref: '#/definitions/Endpoint'
       fiid:
         type: string
@@ -8336,7 +8336,7 @@ definitions:
         example: 0.6.1
         description: 'Matching field. Client software platform name (iOS, Android, React), hardcoded on the client side. E.g. name of the app. Supported wildcard value "Any".'
       endpoint:
-        description: Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpoint. Supported wildcard value "null". Same value should be in Authorization Validation web app endpoint configuration.
+        description: Matching field. Endpoint ID/object as configured on web app instance (granting server). Allows overriding authorization rules level of specific endpointName. Supported wildcard value "null". Same value should be in Authorization Validation web app endpointName configuration.
         $ref: '#/definitions/Endpoint'
       fiid:
         type: string
