@@ -21,22 +21,22 @@ class Authentication {
     /**@ApiModelProperty(value = "Public portion of Authentication data, required to be provided by accessors")*/
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<DataField> publicDataFieldSet = new HashSet<DataField>()
+    Set<Field> publicDataFieldSet = new HashSet<Field>()
 
     /**@ApiModelProperty(value = "Private portion of Authentication data, required to be provided by accessors")*/
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<DataField> privateDataFieldSet = new HashSet<DataField>()
+    Set<Field> privateDataFieldSet = new HashSet<Field>()
 
     /**@ApiModelProperty(value = "Data Authorization key fields returned by Authentication module/Authentication provider to accessor")*/
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<DataField> keyFieldSet = new HashSet<DataField>()
+    Set<Field> keyFieldSet = new HashSet<Field>()
 
     /**@ApiModelProperty(value = "Functional key fields returned by Authentication module/Authentication provider to accessor")*/
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<DataField> functionalFieldSet = new HashSet<DataField>()
+    Set<Field> functionalFieldSet = new HashSet<Field>()
 
     /**@ApiModelProperty(example = "1", value = "Authentication id, generated field")*/
     @Id

@@ -19,7 +19,7 @@ tags:
     description: Simple Jpa Repository
   - name: Endpoint Entity
     description: Simple Jpa Repository
-  - name: DataField Entity
+  - name: Field Entity
     description: Simple Jpa Repository
   - name: Url Entity
     description: Simple Jpa Repository
@@ -893,7 +893,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -923,7 +923,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -961,7 +961,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1025,7 +1025,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '204':
           description: No Content
         '401':
@@ -1058,7 +1058,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1117,7 +1117,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1147,7 +1147,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1185,7 +1185,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1249,7 +1249,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '204':
           description: No Content
         '401':
@@ -1282,7 +1282,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1341,7 +1341,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1371,7 +1371,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1409,7 +1409,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1473,7 +1473,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '204':
           description: No Content
         '401':
@@ -1506,7 +1506,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1565,7 +1565,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -1595,7 +1595,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1633,7 +1633,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -1697,7 +1697,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '204':
           description: No Content
         '401':
@@ -1730,7 +1730,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -2711,7 +2711,7 @@ paths:
   /api/dataFields:
     get:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: findAllDataField
       operationId: findAllDataFieldUsingGET
       consumes:
@@ -2741,7 +2741,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -2750,7 +2750,7 @@ paths:
           description: Not Found
     post:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: saveDataField
       operationId: saveDataFieldUsingPOST
       consumes:
@@ -2763,12 +2763,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/DataField'
+            $ref: '#/definitions/Field'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '201':
           description: Created
         '401':
@@ -2780,7 +2780,7 @@ paths:
   /api/dataFields/search/findByFieldNameAndFieldValue:
     get:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: Find by Name and Value
       operationId: findByFieldNameAndFieldValueDataFieldUsingGET
       consumes:
@@ -2802,7 +2802,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«List«DataField»»'
+            $ref: '#/definitions/Resources«List«Field»»'
         '401':
           description: Unauthorized
         '403':
@@ -2812,7 +2812,7 @@ paths:
   '/api/dataFields/{id}':
     get:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: findOneDataField
       operationId: findOneDataFieldUsingGET
       consumes:
@@ -2830,7 +2830,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -2839,7 +2839,7 @@ paths:
           description: Not Found
     put:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: saveDataField
       operationId: saveDataFieldUsingPUT
       consumes:
@@ -2858,12 +2858,12 @@ paths:
           description: body
           required: true
           schema:
-            $ref: '#/definitions/DataField'
+            $ref: '#/definitions/Field'
       responses:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '201':
           description: Created
         '401':
@@ -2874,7 +2874,7 @@ paths:
           description: Not Found
     delete:
       tags:
-        - DataField Entity
+        - Field Entity
       summary: deleteDataField
       operationId: deleteDataFieldUsingDELETE
       consumes:
@@ -3822,7 +3822,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -3852,7 +3852,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -3890,7 +3890,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '201':
           description: Created
         '401':
@@ -3954,7 +3954,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Resources«DataField»'
+            $ref: '#/definitions/Resources«Field»'
         '204':
           description: No Content
         '401':
@@ -3987,7 +3987,7 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/RestResource«DataField»'
+            $ref: '#/definitions/RestResource«Field»'
         '401':
           description: Unauthorized
         '403':
@@ -7811,7 +7811,7 @@ definitions:
         type: array
         description: Functional key fields returned by Authentication module/Authentication provider to accessor
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       id:
         type: integer
         format: int64
@@ -7821,17 +7821,17 @@ definitions:
         type: array
         description: Data Authorization key fields returned by Authentication module/Authentication provider to accessor
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       privateDataFieldList:
         type: array
         description: 'Private portion of Authentication data, required to be provided by accessors'
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       publicDataFieldList:
         type: array
         description: 'Public portion of Authentication data, required to be provided by accessors'
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
     description: 'Defines a set of input (public, private) and output (keys, functional) data as well as the Granting Server -> Authentication Provider name'
   Authorization:
     type: object
@@ -7888,7 +7888,7 @@ definitions:
       payloadKeyFieldList:
         type: array
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       resource:
         $ref: '#/definitions/RestResource'
       searchUrlList:
@@ -8070,7 +8070,7 @@ definitions:
       content:
         type: array
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       links:
         type: array
         items:
@@ -8155,7 +8155,7 @@ definitions:
         items:
           type: array
           items:
-            $ref: '#/definitions/DataField'
+            $ref: '#/definitions/Field'
       links:
         type: array
         items:
@@ -8389,7 +8389,7 @@ definitions:
         type: array
         description: Functional key fields returned by Authentication module/Authentication provider to accessor
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       id:
         type: integer
         format: int64
@@ -8399,7 +8399,7 @@ definitions:
         type: array
         description: Data Authorization key fields returned by Authentication module/Authentication provider to accessor
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       links:
         type: array
         items:
@@ -8408,12 +8408,12 @@ definitions:
         type: array
         description: 'Private portion of Authentication data, required to be provided by accessors'
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       publicDataFieldList:
         type: array
         description: 'Public portion of Authentication data, required to be provided by accessors'
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
   Resource«Authorization»:
     type: object
     properties:
@@ -8485,7 +8485,7 @@ definitions:
       payloadKeyFieldList:
         type: array
         items:
-          $ref: '#/definitions/DataField'
+          $ref: '#/definitions/Field'
       resource:
         $ref: '#/definitions/RestResource'
       searchUrlList:

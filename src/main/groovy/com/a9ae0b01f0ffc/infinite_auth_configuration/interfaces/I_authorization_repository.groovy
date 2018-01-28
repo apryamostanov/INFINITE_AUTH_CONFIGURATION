@@ -22,7 +22,13 @@ interface I_authorization_repository extends PagingAndSortingRepository<Authoriz
     @Query("""select a from Authorization a where
         a.scope = :scope
         and a.authorizationType = nvl(:authorizationType, 'Access')
-        and (a.accessor = :accessor or a.accessor IS NULL)""")
+        and a.accessor = :accessor""")
     Set<Authorization> findByScopeAndAuthorizationTypeAndAccessor(@Param("scope") Scope scope, @Param("authorizationType") String authorizationType, @Param("accessor") Accessor accessor)
+
+    @Query("""select a from Authorization a where
+        a.scope = :scope
+        and a.authorizationType = nvl(:authorizationType, 'Access')
+        and a.accessor is null""")
+    Set<Authorization> findByScopeAndAuthorizationTypeAndDefaultAccessor(@Param("scope") Scope scope, @Param("authorizationType") String authorizationType)
 
 }

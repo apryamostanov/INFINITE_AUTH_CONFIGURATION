@@ -23,7 +23,7 @@ class Grant {
 
     /*Priority 3*/
     @ManyToMany(fetch = FetchType.EAGER)
-    Set<DataField> keyFieldSet = new HashSet<DataField>()
+    Set<Field> keyFieldSet = new HashSet<Field>()
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

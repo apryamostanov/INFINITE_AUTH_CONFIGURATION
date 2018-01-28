@@ -8,13 +8,13 @@ import static base.T_common_base_1_const.GC_EMPTY_STRING
 
 @CompileStatic
 @Entity
-class Url {
+class Field {
 
 
     String resourceName = this.getClass().getSimpleName()
 
     @Column(unique = true)
-    String urlName = GC_EMPTY_STRING
+    String fieldName = GC_EMPTY_STRING
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
