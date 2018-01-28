@@ -12,6 +12,7 @@ class Authorization {
 
     String resourceName = this.getClass().getSimpleName()
 
+    @Column(unique = true)
     String authorizationName
 
     @ManyToOne(fetch = FetchType.EAGER)

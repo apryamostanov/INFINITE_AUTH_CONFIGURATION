@@ -4,7 +4,7 @@ import groovy.transform.CompileStatic
 
 import javax.persistence.*
 
-import static base.T_common_base_1_const.GC_NULL_OBJ_REF
+import static base.T_common_base_1_const.GC_EMPTY_STRING
 
 @CompileStatic
 @Entity
@@ -13,28 +13,17 @@ class Grant {
 
     String resourceName = this.getClass().getSimpleName()
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    RestResource restResource = GC_NULL_OBJ_REF as RestResource
+    String restResourceName = GC_EMPTY_STRING
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Method> methodSet = new HashSet<Method>()
+    String method = GC_EMPTY_STRING
 
     /*Priority 2*/
     /*/{$username}*/
-    @ManyToOne(fetch = FetchType.EAGER)
-    Url selfUrl = GC_NULL_OBJ_REF as Url
-
-    /*Priority 1*/
-    /*/search/findByIdAndUsername?id=*&username=$username}*/
-    /*/search/findByUsername?username=$username}*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Url> searchUrlSet = new HashSet<Url>()
+    String urlMask = GC_EMPTY_STRING
 
     /*Priority 3*/
     @ManyToMany(fetch = FetchType.EAGER)
-    Set<DataField> payloadKeyFieldSet = new HashSet<DataField>()
+    Set<DataField> keyFieldSet = new HashSet<DataField>()
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
