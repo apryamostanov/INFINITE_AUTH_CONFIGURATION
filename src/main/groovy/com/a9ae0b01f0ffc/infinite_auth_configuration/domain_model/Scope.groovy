@@ -9,6 +9,7 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 
 @CompileStatic
 @Entity
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames=["scopeName", "accessor"]))
 class Scope {
 
     String resourceName = this.getClass().getSimpleName()

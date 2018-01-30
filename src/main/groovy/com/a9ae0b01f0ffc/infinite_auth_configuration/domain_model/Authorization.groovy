@@ -8,20 +8,20 @@ import static base.T_common_base_1_const.GC_NULL_OBJ_REF
 
 @CompileStatic
 @Entity
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames=["accessor", "authorizationType", "scope", "identity"]))
 class Authorization {
 
     String resourceName = this.getClass().getSimpleName()
 
-    @Column(unique = true)
     String authorizationName
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @OrderColumn
-    Set<Authentication> authenticationSet = new HashSet<Authentication>()
+    Identity identity = GC_NULL_OBJ_REF as Identity
 
     @ManyToOne(fetch = FetchType.EAGER)
     Scope scope = GC_NULL_OBJ_REF as Scope
