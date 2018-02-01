@@ -22,8 +22,8 @@ class Grant {
     String urlMask = GC_EMPTY_STRING
 
     /*Priority 3*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    Set<Field> keyFieldSet = new HashSet<Field>()
+    @ElementCollection
+    Set<String> keyFieldSet = new HashSet<String>()
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
