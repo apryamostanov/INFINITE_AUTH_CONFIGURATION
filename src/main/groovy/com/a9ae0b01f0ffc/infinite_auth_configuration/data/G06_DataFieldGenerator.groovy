@@ -41,6 +41,13 @@ class G06_DataFieldGenerator {
         l_entity_set.add(new Field(fieldName: "login_flag"))
         l_entity_set.add(new Field(fieldName: "error_number"))
         l_entity_set.add(new Field(fieldName: "product_id"))
+        l_entity_set.add(new Field(fieldName: "appName"))
+        l_entity_set.add(new Field(fieldName: "accessorName"))
+        l_entity_set.add(new Field(fieldName: "appVersion"))
+        l_entity_set.add(new Field(fieldName: "product"))
+        l_entity_set.add(new Field(fieldName: "productGroup"))
+        l_entity_set.add(new Field(fieldName: "apiVersionName"))
+        l_entity_set.add(new Field(fieldName: "endpointName"))
         p_data_field_repository.save(l_entity_set)
     }
 

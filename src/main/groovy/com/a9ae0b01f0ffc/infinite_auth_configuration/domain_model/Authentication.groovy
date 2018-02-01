@@ -18,30 +18,12 @@ class Authentication {
     @Column(unique = true)
     String authenticationName = GC_EMPTY_STRING
 
-    /**@ApiModelProperty(value = "Public portion of Authentication data, required to be provided by accessors")*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Field> publicDataFieldSet = new HashSet<Field>()
-
-    /**@ApiModelProperty(value = "Private portion of Authentication data, required to be provided by accessors")*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Field> privateDataFieldSet = new HashSet<Field>()
-
-    /**@ApiModelProperty(value = "Data Authorization key fields returned by Authentication module/Authentication provider to accessor")*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Field> keyFieldSet = new HashSet<Field>()
-
-    /**@ApiModelProperty(value = "Functional key fields returned by Authentication module/Authentication provider to accessor")*/
-    @ManyToMany(fetch = FetchType.EAGER)
-    @OrderColumn
-    Set<Field> functionalFieldSet = new HashSet<Field>()
-
     /**@ApiModelProperty(example = "1", value = "Authentication id, generated field")*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     Long id
+
+
 
 }
