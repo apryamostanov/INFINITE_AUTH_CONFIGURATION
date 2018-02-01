@@ -14,11 +14,20 @@ class G12_AuthorizationGenerator {
         Set<Authorization> l_entity_set = new HashSet<Authorization>()
         l_entity_set.add(new Authorization(
                 authorizationName: "Access to Anonymous Services",
+                scope: p_scope_repository.findByScopeNameAndAccessor("Anonymous Services", p_accessor_repository.findByAccessorName("Any accessor").first()).first(),
+                identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
+                durationSeconds: 1800,
+                maxUsageCount: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
+                authorizationType: "Access"
+        ))
+        l_entity_set.add(new Authorization(
+                authorizationName: "Access to Anonymous Services",
                 scope: p_scope_repository.findByScopeNameAndAccessor("Anonymous Services", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access"
         ))
         p_authorization_repository.save(l_entity_set)
@@ -29,7 +38,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: null,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
         ))
@@ -49,7 +58,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: null,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Refresh",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
         ))
@@ -72,7 +81,7 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Refresh to Main Screen").first(),
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
         ))
@@ -94,7 +103,7 @@ class G12_AuthorizationGenerator {
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 refreshAuthorization: p_authorization_repository.findByAuthorizationName("Refresh to Main Screen").first(),
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
         ))
@@ -117,7 +126,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -127,7 +136,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of Provisioned User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -136,7 +145,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and Provisioning Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: 20,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -146,7 +155,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -156,7 +165,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of User Data and DOB Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -166,7 +175,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))
@@ -176,7 +185,7 @@ class G12_AuthorizationGenerator {
                 identity: p_identity_repository.findByIdentityName("Owner of OTP Data and Provisioned User Data").first(),
                 durationSeconds: 30,
                 maxUsageCount: 1,
-                accessor: null,
+                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
                 authorizationType: "Access",
                 prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Main Screen")
         ))

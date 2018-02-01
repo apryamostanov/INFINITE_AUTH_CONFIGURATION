@@ -13,6 +13,8 @@ interface I_scope_repository extends PagingAndSortingRepository<Scope, Long> {
 
     Set<Scope> findByScopeName(@Param("scopeName") String scopeName)
 
+    /*@Query("""select s from Scope s where
+        s.scopeName = :scopeName and ((:accessor is not null and s.accessor = :accessor) or (:accessor is null and s.accessor is null))""")*/
     Set<Scope> findByScopeNameAndAccessor(@Param("scopeName") String scopeName, @Param("accessor") Accessor accessor)
 
 }

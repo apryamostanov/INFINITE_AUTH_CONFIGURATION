@@ -49,13 +49,11 @@ interface I_authorization_repository extends PagingAndSortingRepository<Authoriz
     Set<Authorization> findByScopeAndAuthorizationTypeAndDefaultAccessorAndIdentity(@Param("scope") Scope scope, @Param("authorizationType") String authorizationType, @Param("identity") Identity identity)
 
     @Query("""select a from Authorization a
-        join a.scope s
-        left join a.accessor acc
         left join a.identity i
-        where s.scopeName = :scopeName
-        and (acc.accessorName = :accessorName or (:accessorName is null and acc.accessorName is null))
+        where a.scope = :scope
+        and a.accessor = :accessor
         and (i.identityName = :identityName or :identityName is null)
         and a.authorizationType = nvl(:authorizationType, 'Access')""")
-    Set<Authorization> matchAuthorizations(@Param("scopeName") String scopeName, @Param("accessorName") String accessorName, @Param("identityName") String identityName, @Param("authorizationType") String authorizationType)
+    Set<Authorization> matchAuthorizations(@Param("scope") Scope scope, @Param("accessor") Accessor accessor, @Param("identityName") String identityName, @Param("authorizationType") String authorizationType)
 
 }

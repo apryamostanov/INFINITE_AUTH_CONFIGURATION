@@ -9,7 +9,7 @@ class G04_AccessorGenerator {
 
     void generate_data(I_accessor_repository p_accessor_repository) {
         Set<Accessor> l_entity_set = new HashSet<Accessor>()
-        //l_entity_set.add(new Accessor(lookupPriority:-1, platform: "%", appVersion: "%", fiid: "%", product: "%", productGroup: "%", accessorName: "%", appName: "%", endpointName: null, apiVersionName: "%").
+        l_entity_set.add(new Accessor(lookupPriority:-1, platform: "%", appVersion: "%", fiid: "%", product: "%", productGroup: "%", accessorName: "Any accessor", appName: "%", endpointName: "%", apiVersionName: "%"))
         l_entity_set.add(new Accessor(lookupPriority: 0, platform: "%", appVersion: "%", fiid: "%", product: "%", productGroup: "Single Currency", accessorName: "Any accessor Single Currency 0.0.x", appName: "%", endpointName: "%", apiVersionName: "0.0.%"))
         l_entity_set.add(new Accessor(lookupPriority: 0, platform: "%", appVersion: "%", fiid: "%", product: "%", productGroup: "Multi Currency", accessorName: "Any accessor Multi Currency 0.0.x", appName: "%", endpointName: "%", apiVersionName: "0.0.%"))
         l_entity_set.add(new Accessor(lookupPriority: 0, platform: "%", appVersion: "%", fiid: "%", product: "%", productGroup: "Single Currency", accessorName: "Any accessor Single Currency 1.0.x", appName: "%", endpointName: "%", apiVersionName: "1.0.%"))
