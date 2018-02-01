@@ -14,15 +14,6 @@ class G12_AuthorizationGenerator {
         Set<Authorization> l_entity_set = new HashSet<Authorization>()
         l_entity_set.add(new Authorization(
                 authorizationName: "Access to Anonymous Services",
-                scope: p_scope_repository.findByScopeNameAndAccessor("Anonymous Services", p_accessor_repository.findByAccessorName("Any accessor").first()).first(),
-                identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
-                durationSeconds: 1800,
-                maxUsageCount: null,
-                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
-                authorizationType: "Access"
-        ))
-        l_entity_set.add(new Authorization(
-                authorizationName: "Access to Anonymous Services",
                 scope: p_scope_repository.findByScopeNameAndAccessor("Anonymous Services", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
