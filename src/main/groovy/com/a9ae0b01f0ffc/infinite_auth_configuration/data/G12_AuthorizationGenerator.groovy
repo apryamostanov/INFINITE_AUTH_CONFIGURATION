@@ -26,42 +26,18 @@ class G12_AuthorizationGenerator {
         l_entity_set.add(new Authorization(
                 authorizationName: "Refresh to Main Screen",
                 scope: p_scope_repository.findByScopeNameAndAccessor("Main Screen", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
-                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 2592000,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
-                authorizationType: "Refresh",
-                prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
+                authorizationType: "Refresh"
         ))
         l_entity_set.add(new Authorization(
                 authorizationName: "Refresh to Main Screen",
                 scope: p_scope_repository.findByScopeNameAndAccessor("Main Screen", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
-                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
                 durationSeconds: 1800,
                 maxUsageCount: null,
                 accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                authorizationType: "Refresh",
-                prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
-        ))
-        l_entity_set.add(new Authorization(
-                authorizationName: "Refresh to Main Screen",
-                scope: p_scope_repository.findByScopeNameAndAccessor("Main Screen", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
-                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
-                durationSeconds: 2592000,
-                maxUsageCount: null,
-                accessor: p_accessor_repository.findByAccessorName("Any accessor").first(),
-                authorizationType: "Refresh",
-                prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
-        ))
-        l_entity_set.add(new Authorization(
-                authorizationName: "Refresh to Main Screen",
-                scope: p_scope_repository.findByScopeNameAndAccessor("Main Screen", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
-                identity: p_identity_repository.findByIdentityName("Owner of User Data").first(),
-                durationSeconds: 1800,
-                maxUsageCount: null,
-                accessor: p_accessor_repository.findByAccessorName("LMN Multi Currency React (FT2 Development)").first(),
-                authorizationType: "Refresh",
-                prerequisiteAuthorizationSet: p_authorization_repository.findByAuthorizationName("Access to Anonymous Services")
+                authorizationType: "Refresh"
         ))
         p_authorization_repository.save(l_entity_set)
         l_entity_set.clear()
