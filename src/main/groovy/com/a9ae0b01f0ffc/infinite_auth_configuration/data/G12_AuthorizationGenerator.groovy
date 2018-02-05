@@ -13,7 +13,7 @@ class G12_AuthorizationGenerator {
     void generate_data(I_authorization_repository p_authorization_repository, I_scope_repository p_scope_repository, I_identity_repository p_identity_repository, I_accessor_repository p_accessor_repository) {
         Set<Authorization> l_entity_set = new HashSet<Authorization>()
         l_entity_set.add(new Authorization(
-                authorizationName: "Access to Anonymous Services",
+                authorizationName: "Access to Anonymous Services",//todo: scopes -> collection; first identify accessor/matching authorization->then 1 actual scope using this accessor
                 scope: p_scope_repository.findByScopeNameAndAccessor("Anonymous Services", p_accessor_repository.findByAccessorName("Any accessor Multi Currency 2.0.x").first()).first(),
                 identity: p_identity_repository.findByIdentityName("Owner of Accessor Data").first(),
                 durationSeconds: 1800,
