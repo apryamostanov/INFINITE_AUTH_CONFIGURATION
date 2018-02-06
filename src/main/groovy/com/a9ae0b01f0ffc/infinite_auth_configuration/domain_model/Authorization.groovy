@@ -19,12 +19,13 @@ class Authorization {
     @OrderColumn
     Accessor accessor = GC_NULL_OBJ_REF as Accessor
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
-    Identity identity = GC_NULL_OBJ_REF as Identity
+    Set<Identity> identitySet = new HashSet<Identity>()
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    Scope scope = GC_NULL_OBJ_REF as Scope
+    @ManyToMany(fetch = FetchType.EAGER)
+    @OrderColumn
+    Set<Scope> scopeSet = new HashSet<Scope>()
 
     Integer durationSeconds
 
@@ -35,6 +36,9 @@ class Authorization {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @OrderColumn
+    /**
+     * Any of these
+     */
     Set<Authorization> prerequisiteAuthorizationSet
 
     String authorizationType
